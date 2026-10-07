@@ -3093,6 +3093,7 @@ input, textarea, select {
   stroke: #3c2714;
   stroke-linecap: round;
   stroke-linejoin: round;
+  filter: drop-shadow(0 4px 10px rgba(20, 12, 5, 0.22));
 }
 
 .branch-twig-stem {
@@ -3100,6 +3101,7 @@ input, textarea, select {
   stroke: #4d341b;
   stroke-linecap: round;
   stroke-linejoin: round;
+  filter: drop-shadow(0 2px 6px rgba(20, 12, 5, 0.16));
 }
 
 /* Hojas de Chopo en las Ramas (Populus deltoides) */
@@ -3210,19 +3212,19 @@ input, textarea, select {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 25;
+  z-index: 6; /* Detrás de las tarjetas y textos (z-index: 10) para no tapar jamás la información */
   overflow: hidden;
 }
 
 .park-butterfly {
   position: absolute;
-  width: 42px;
-  height: 34px;
+  width: 40px;
+  height: 32px;
   transform-style: preserve-3d;
   will-change: transform, left, top;
   pointer-events: none;
-  filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.28));
-  transition: opacity 0.5s ease;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.24));
+  transition: opacity 0.4s ease;
 }
 
 .b-wings-wrap {
@@ -3244,21 +3246,22 @@ input, textarea, select {
 .b-wing-left {
   left: 2px;
   transform-origin: 100% 50%;
-  animation: bWingFlapLeft 0.12s ease-in-out infinite alternate;
+  animation: bWingFlapLeft 0.11s ease-in-out infinite alternate;
 }
 
 .b-wing-right {
   right: 2px;
   transform-origin: 0% 50%;
-  animation: bWingFlapRight 0.12s ease-in-out infinite alternate;
+  animation: bWingFlapRight 0.11s ease-in-out infinite alternate;
 }
 
-.park-butterfly.perched .b-wing-left {
-  animation: bPerchFlapLeft 2.2s ease-in-out infinite alternate !important;
+/* Modo planeo (Gliding): aleteo pausado, sutil y orgánico flotando en la brisa */
+.park-butterfly.gliding .b-wing-left {
+  animation: bGlideFlapLeft 1.3s ease-in-out infinite alternate !important;
 }
 
-.park-butterfly.perched .b-wing-right {
-  animation: bPerchFlapRight 2.2s ease-in-out infinite alternate !important;
+.park-butterfly.gliding .b-wing-right {
+  animation: bGlideFlapRight 1.3s ease-in-out infinite alternate !important;
 }
 
 @keyframes bWingFlapLeft {
@@ -3271,16 +3274,14 @@ input, textarea, select {
   100% { transform: rotateY(74deg) rotateZ(-6deg); }
 }
 
-@keyframes bPerchFlapLeft {
-  0% { transform: rotateY(8deg); }
-  50% { transform: rotateY(-42deg); }
-  100% { transform: rotateY(12deg); }
+@keyframes bGlideFlapLeft {
+  0% { transform: rotateY(16deg) rotateZ(-2deg); }
+  100% { transform: rotateY(-24deg) rotateZ(3deg); }
 }
 
-@keyframes bPerchFlapRight {
-  0% { transform: rotateY(-8deg); }
-  50% { transform: rotateY(42deg); }
-  100% { transform: rotateY(-12deg); }
+@keyframes bGlideFlapRight {
+  0% { transform: rotateY(-16deg) rotateZ(2deg); }
+  100% { transform: rotateY(24deg) rotateZ(-3deg); }
 }
 
 .b-body {
@@ -3328,6 +3329,21 @@ input, textarea, select {
   z-index: 10;
 }
 
+/* Blindaje de encabezados y textos: Las ramas, hojas y mariposas pasan estrictamente por detrás */
+.section-header,
+.section-title,
+.section-subtitle,
+.section-eyebrow,
+.hero-header-center,
+.hero-main-title,
+.hero-main-subtitle,
+.about-text,
+.about-content,
+.about-highlight-box {
+  position: relative;
+  z-index: 10;
+}
+
 .card-countdown,
 .card-metrics,
 .about-gallery,
@@ -3351,9 +3367,9 @@ input, textarea, select {
 .faq-answer {
   position: relative;
   z-index: 10;
-  background: var(--chopo-surface);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .cta-banner-card {

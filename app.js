@@ -554,13 +554,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Copa Suprema en Hero (margen superior izquierdo sombreando el cielo del parque)
     rawMilestones.push({
       id: 'm_hero_canopy',
-      x: docWidth * 0.13,
-      y: 42,
+      x: docWidth * 0.12,
+      y: 40,
       branchDirs: ['inward', 'outward'],
       leavesCount: 22
     });
 
-    // 2. Hero: Detrás del título y pasando tras la tarjeta de cuenta regresiva
+    // 2. Hero: Detrás de la tarjeta de cuenta regresiva (extiende ramas visibles a izquierda e interior)
     const cardCountdown = document.querySelector('.card-countdown');
     if (cardCountdown) {
       const r = getElementDocRect(cardCountdown);
@@ -568,11 +568,11 @@ document.addEventListener('DOMContentLoaded', () => {
         id: 'm_hero_card_left',
         x: r.centerX - 10,
         y: r.centerY,
-        branchDirs: ['outward'],
-        leavesCount: 16
+        branchDirs: ['outward', 'inward'],
+        leavesCount: 18
       });
     } else {
-      rawMilestones.push({ id: 'm_hero_cd_fb', x: docWidth * 0.25, y: sInicio.top + sInicio.h * 0.65, branchDirs: ['outward'], leavesCount: 14 });
+      rawMilestones.push({ id: 'm_hero_cd_fb', x: docWidth * 0.25, y: sInicio.top + sInicio.h * 0.65, branchDirs: ['outward', 'inward'], leavesCount: 16 });
     }
 
     // 3. Hero: Curva sinuosa que cruza hacia la derecha pasando por detrás de la tarjeta de métricas
@@ -583,26 +583,26 @@ document.addEventListener('DOMContentLoaded', () => {
         id: 'm_hero_card_right',
         x: r.centerX + 15,
         y: r.centerY + 10,
-        branchDirs: ['inward'],
-        leavesCount: 16
+        branchDirs: ['inward', 'outward'],
+        leavesCount: 18
       });
     } else {
-      rawMilestones.push({ id: 'm_hero_met_fb', x: docWidth * 0.72, y: sInicio.top + sInicio.h * 0.85, branchDirs: ['inward'], leavesCount: 14 });
+      rawMilestones.push({ id: 'm_hero_met_fb', x: docWidth * 0.72, y: sInicio.top + sInicio.h * 0.85, branchDirs: ['inward', 'outward'], leavesCount: 16 });
     }
 
-    // 4. Misión alta: Curva hacia la izquierda detrás del texto de misión
-    const misionText = document.querySelector('.about-content');
+    // 4. Misión alta: Curva hacia el margen exterior izquierdo sin invadir el bloque de texto
+    const misionText = document.querySelector('.about-content') || document.querySelector('.about-text');
     if (misionText) {
       const r = getElementDocRect(misionText);
       rawMilestones.push({
         id: 'm_mision_text',
-        x: Math.max(docWidth * 0.20, r.centerX - 40),
+        x: Math.max(docWidth * 0.14, r.left - 25),
         y: r.top + r.height * 0.35,
-        branchDirs: ['inward', 'outward'],
+        branchDirs: ['outward', 'inward'],
         leavesCount: 16
       });
     } else {
-      rawMilestones.push({ id: 'm_mision_txt_fb', x: docWidth * 0.30, y: sMision.top + sMision.h * 0.32, branchDirs: ['inward', 'outward'], leavesCount: 16 });
+      rawMilestones.push({ id: 'm_mision_txt_fb', x: docWidth * 0.22, y: sMision.top + sMision.h * 0.32, branchDirs: ['outward', 'inward'], leavesCount: 16 });
     }
 
     // 5. Misión baja: Gran curva diagonal pasando por detrás de la galería de fotos
@@ -613,35 +613,35 @@ document.addEventListener('DOMContentLoaded', () => {
         id: 'm_mision_gal',
         x: r.centerX + 20,
         y: r.centerY,
-        branchDirs: ['outward'],
-        leavesCount: 16
+        branchDirs: ['outward', 'inward'],
+        leavesCount: 18
       });
     } else {
-      rawMilestones.push({ id: 'm_mision_gal_fb', x: docWidth * 0.75, y: sMision.top + sMision.h * 0.76, branchDirs: ['outward'], leavesCount: 16 });
+      rawMilestones.push({ id: 'm_mision_gal_fb', x: docWidth * 0.75, y: sMision.top + sMision.h * 0.76, branchDirs: ['outward', 'inward'], leavesCount: 16 });
     }
 
-    // 6. Brigadas: Pasa por detrás de la Tarjeta 1 (Limpieza - izquierda)
+    // 6. Brigadas: Pasa por detrás de la Tarjeta 1 (extiende ramas a la izquierda y centro)
     const brigadeCards = document.querySelectorAll('.brigade-card');
     if (brigadeCards.length >= 1) {
       const r1 = getElementDocRect(brigadeCards[0]);
       rawMilestones.push({
         id: 'm_brigadas_1',
         x: r1.centerX,
-        y: r1.centerY,
-        branchDirs: ['inward', 'outward'],
-        leavesCount: 15
+        y: r1.centerY + 10,
+        branchDirs: ['outward', 'inward'],
+        leavesCount: 18
       });
     }
 
-    // 7. Brigadas: Ondulación continua cruzando por detrás de la Tarjeta 3 (Monitoreo - derecha)
+    // 7. Brigadas: Ondulación continua cruzando por detrás de la Tarjeta 3 (ramas a derecha e interior)
     if (brigadeCards.length >= 3) {
       const r3 = getElementDocRect(brigadeCards[2]);
       rawMilestones.push({
         id: 'm_brigadas_3',
         x: r3.centerX,
         y: r3.centerY + 20,
-        branchDirs: ['inward'],
-        leavesCount: 15
+        branchDirs: ['outward', 'inward'],
+        leavesCount: 18
       });
     }
 
@@ -813,13 +813,13 @@ document.addEventListener('DOMContentLoaded', () => {
       rawMilestones.push({ id: 'm_cta_fb', x: docWidth * 0.36, y: docHeight - 320, branchDirs: ['inward'], leavesCount: 12 });
     }
 
-    // 17. Transición suave al Footer hacia el centro del lecho de raíces
+    // 17. Transición suave al Footer hacia el centro del lecho de raíces (sin ramas en la base del tronco)
     rawMilestones.push({
       id: 'm_footer_entry',
       x: docWidth * 0.50,
       y: docHeight - 110,
-      branchDirs: ['outward'],
-      leavesCount: 10
+      branchDirs: [],
+      leavesCount: 0
     });
 
     // Ordenar de arriba hacia abajo (Y ascendente)
@@ -1154,61 +1154,64 @@ document.addEventListener('DOMContentLoaded', () => {
     let cp1X = 0, cp1Y = 0, cp2X = 0, cp2Y = 0;
 
     if (direction === 'inward') {
-      spanX = isLeftSide ? Math.min(docWidth * 0.20, 290) : -Math.min(docWidth * 0.20, 290);
+      // Ramas interiores: arquear hacia el centro / pasillos abiertos entre tarjetas
+      const inReach = isMobile ? Math.min(docWidth * 0.32, 190) : Math.min(docWidth * 0.25, 330);
+      spanX = isLeftSide ? inReach : -inReach;
     } else {
-      spanX = isLeftSide ? -Math.min(docWidth * 0.09, 120) : Math.min(docWidth * 0.09, 120);
+      // Ramas exteriores: extender ampliamente para sobrepasar las tarjetas y lucir con plenitud en los márgenes
+      const outMin = isMobile ? 180 : 310;
+      const outMax = isMobile ? 240 : 420;
+      const outReach = Math.max(outMin, Math.min(docWidth * 0.28, outMax));
+      spanX = isLeftSide ? -outReach : outReach;
     }
-    if (isMobile) spanX *= 0.65;
 
     let endX = startX + spanX;
     endX = Math.max(30, Math.min(docWidth - 30, endX));
 
     if (archetype === 0) {
       // Arquetipo 0: Arco S ascendente elegante
-      endY = startY - (48 + (seed % 3) * 18);
+      endY = startY - (56 + (seed % 3) * 22);
       cp1X = startX + spanX * 0.35;
       cp1Y = startY + (isLeftSide ? 25 : -25);
       cp2X = startX + spanX * 0.72;
-      cp2Y = endY + 14;
+      cp2Y = endY + 16;
     } else if (archetype === 1) {
       // Arquetipo 1: Rama empinada buscando luz solar
-      endY = startY - (62 + (seed % 4) * 20);
+      endY = startY - (74 + (seed % 4) * 24);
       cp1X = startX + spanX * 0.28;
-      cp1Y = startY - 30;
+      cp1Y = startY - 36;
       cp2X = startX + spanX * 0.68;
-      cp2Y = endY - 24;
+      cp2Y = endY - 26;
     } else if (archetype === 2) {
       // Arquetipo 2: Copa lateral ancha extendida
-      spanX *= 1.3;
+      spanX *= 1.25;
       endX = Math.max(30, Math.min(docWidth - 30, startX + spanX));
-      endY = startY - (32 + (seed % 3) * 14);
+      endY = startY - (42 + (seed % 3) * 16);
       cp1X = startX + spanX * 0.45;
-      cp1Y = startY - 12;
+      cp1Y = startY - 14;
       cp2X = startX + spanX * 0.82;
-      cp2Y = endY + 18;
+      cp2Y = endY + 20;
     } else if (archetype === 3) {
       // Arquetipo 3: Rama pendular con remonte gracioso
-      endY = startY - (20 + (seed % 2) * 12);
+      endY = startY + (direction === 'inward' ? -42 : 24) - ((seed % 2) * 16);
       cp1X = startX + spanX * 0.38;
-      cp1Y = startY + 36;
+      cp1Y = startY + 42;
       cp2X = startX + spanX * 0.76;
-      cp2Y = endY + 30;
+      cp2Y = endY + 28;
     } else if (archetype === 4) {
-      // Arquetipo 4: Brote joven de primavera (compacto y denso)
-      spanX *= 0.75;
-      endX = Math.max(30, Math.min(docWidth - 30, startX + spanX));
-      endY = startY - (38 + (seed % 3) * 15);
+      // Arquetipo 4: Brote joven de copa alta
+      endY = startY - (65 + (seed % 3) * 18);
       cp1X = startX + spanX * 0.30;
-      cp1Y = startY - 18;
+      cp1Y = startY - 22;
       cp2X = startX + spanX * 0.65;
-      cp2Y = endY - 10;
+      cp2Y = endY - 12;
     } else {
       // Arquetipo 5: Horqueta doble de copa alta
-      endY = startY - (54 + (seed % 4) * 16);
+      endY = startY - (62 + (seed % 4) * 20);
       cp1X = startX + spanX * 0.32;
-      cp1Y = startY + (isLeftSide ? 18 : -18);
+      cp1Y = startY + (isLeftSide ? 20 : -20);
       cp2X = startX + spanX * 0.75;
-      cp2Y = endY + 10;
+      cp2Y = endY + 12;
     }
 
     const isGrowingLeft = spanX < 0;
@@ -1220,27 +1223,23 @@ document.addEventListener('DOMContentLoaded', () => {
     branchGroup.style.animationDelay = `-${((seed * 1.7) % 7).toFixed(1)}s`;
     branchGroup.style.animationDuration = `${5.5 + (seed % 5) * 1.6}s`;
 
-    // Tallo principal
+    // Tallo principal con grosor orgánico
     const limb = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     const limbD = `M ${startX.toFixed(1)} ${startY.toFixed(1)} C ${cp1X.toFixed(1)} ${cp1Y.toFixed(1)}, ${cp2X.toFixed(1)} ${cp2Y.toFixed(1)}, ${endX.toFixed(1)} ${endY.toFixed(1)}`;
     limb.setAttribute('d', limbD);
     limb.setAttribute('class', 'branch-limb-stem');
-    limb.setAttribute('stroke-width', isMobile ? '5.5' : '8.5');
+    limb.setAttribute('stroke-width', isMobile ? '6' : '9');
     branchGroup.appendChild(limb);
 
     // Ramillas secundarias con variación dinámica
     const twigSign = isGrowingLeft ? -1 : 1;
-    const twigCount = 2 + (seed % 3); // 2 a 4 ramillas
+    const twigCount = 3 + (seed % 2); // 3 a 4 ramillas bien nutridas
     const twigs = [];
-    if (twigCount >= 2) {
-      twigs.push({ t: 0.46, lenX: twigSign * (36 + (seed % 3) * 8), lenY: -30, stroke: 4.2 });
-      twigs.push({ t: 0.74, lenX: twigSign * (32 + (seed % 2) * 10), lenY: 24, stroke: 3.2 });
-    }
-    if (twigCount >= 3) {
-      twigs.push({ t: 0.60, lenX: twigSign * 26, lenY: -44, stroke: 2.8 });
-    }
+    twigs.push({ t: 0.40, lenX: twigSign * (55 + (seed % 3) * 14), lenY: -38, stroke: 4.8 });
+    twigs.push({ t: 0.70, lenX: twigSign * (48 + (seed % 2) * 12), lenY: 32, stroke: 3.6 });
+    twigs.push({ t: 0.55, lenX: twigSign * 42, lenY: -54, stroke: 3.2 });
     if (twigCount >= 4) {
-      twigs.push({ t: 0.85, lenX: twigSign * 20, lenY: 16, stroke: 2.4 });
+      twigs.push({ t: 0.84, lenX: twigSign * 34, lenY: 22, stroke: 2.8 });
     }
 
     const twigEndpoints = [{ x: endX, y: endY }];
@@ -1257,13 +1256,11 @@ document.addEventListener('DOMContentLoaded', () => {
       twigEndpoints.push({ x: tx, y: ty });
 
       const twigPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      twigPath.setAttribute('d', `M ${bx.toFixed(1)} ${by.toFixed(1)} Q ${(bx + tx) / 2} ${by - 8} ${tx.toFixed(1)} ${ty.toFixed(1)}`);
+      twigPath.setAttribute('d', `M ${bx.toFixed(1)} ${by.toFixed(1)} Q ${(bx + tx) / 2} ${by - 10} ${tx.toFixed(1)} ${ty.toFixed(1)}`);
       twigPath.setAttribute('class', 'branch-twig-stem');
       twigPath.setAttribute('stroke-width', tw.stroke.toString());
       branchGroup.appendChild(twigPath);
     });
-
-    branchCont.appendChild(branchGroup);
 
     // Almacenar coordenada de la punta para emisión de hojas flotantes
     livingTreeState.branchTips.push({ x: endX, y: endY });
@@ -1277,10 +1274,9 @@ document.addEventListener('DOMContentLoaded', () => {
       '#e59a22'  // Ámbar cálido otoñal
     ];
 
-    // Racimo de follaje con micro-temblor de hojas
+    // Racimo de follaje: se acopla directamente al branchGroup para oscilar en armonía física con la rama
     const foliageCluster = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     foliageCluster.setAttribute('class', 'tree-leaf-cluster');
-    foliageCluster.style.transformOrigin = `${endX}px ${endY}px`;
 
     twigEndpoints.forEach((ep, epIdx) => {
       const leavesForTwig = Math.max(3, Math.floor(count / twigEndpoints.length));
@@ -1290,15 +1286,15 @@ document.addEventListener('DOMContentLoaded', () => {
         leafGroup.setAttribute('class', 'chopo-leaf-node');
 
         const baseAngle = isGrowingLeft ? 180 : 0;
-        const angleOffset = (l - leavesForTwig / 2) * 26 + (seed * 17) % 20;
+        const angleOffset = (l - leavesForTwig / 2) * 28 + (seed * 17) % 22;
         const leafAngle = baseAngle + angleOffset;
 
-        const dist = 11 + l * 6.5;
+        const dist = 14 + l * 8.5;
         const rad = (leafAngle * Math.PI) / 180;
         const lx = ep.x + Math.cos(rad) * dist;
         const ly = ep.y + Math.sin(rad) * dist;
 
-        const leafScale = 0.72 + ((seed + l) % 5) * 0.11;
+        const leafScale = 0.78 + ((seed + l) % 5) * 0.12;
         const leafColor = chopoLeafColors[(seed + l + epIdx) % chopoLeafColors.length];
 
         leafGroup.setAttribute('transform', `translate(${lx.toFixed(1)}, ${ly.toFixed(1)}) rotate(${leafAngle + 90}) scale(${leafScale})`);
@@ -1341,7 +1337,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    foliageCont.appendChild(foliageCluster);
+    branchGroup.appendChild(foliageCluster);
+    branchCont.appendChild(branchGroup);
   }
 
   // ===================================================================
@@ -1739,7 +1736,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingLeavesEngine();
 
   // ===================================================================
-  // 19. SANTUARIO DE MARIPOSAS (VUELO AUTÓNOMO Y POSADO EN RECUADROS)
+  // 19. SANTUARIO DE MARIPOSAS (VUELO NATURAL ORGÁNICO Y EVITACIÓN DE RECUADROS)
   // ===================================================================
   function initButterflySanctuary() {
     const sanctuaryContainer = document.getElementById('butterfly-sanctuary');
@@ -1750,7 +1747,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         id: 'butterfly-monarch',
         species: 'Monarca',
-        speed: 0.024,
+        baseSpeed: 1.8,
         wingSvgL: `
           <svg class="b-wing b-wing-left" viewBox="0 0 28 38">
             <defs>
@@ -1787,7 +1784,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         id: 'butterfly-emerald',
         species: 'Malaquita',
-        speed: 0.021,
+        baseSpeed: 1.6,
         wingSvgL: `
           <svg class="b-wing b-wing-left" viewBox="0 0 28 38">
             <defs>
@@ -1822,7 +1819,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         id: 'butterfly-amber',
         species: 'Azufrada',
-        speed: 0.026,
+        baseSpeed: 1.9,
         wingSvgL: `
           <svg class="b-wing b-wing-left" viewBox="0 0 28 38">
             <defs>
@@ -1856,23 +1853,92 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     ];
 
-    // Buscar selectores de tarjetas atractivas donde las mariposas puedan posarse
-    const cardSelectors = [
-      '.spotlight-card',
-      '.brigade-card',
-      '.species-card',
-      '.event-card',
-      '.agenda-card',
-      '.manifesto-card',
-      '.step-card',
-      '.contact-hub-card',
-      '.contact-card',
-      '.card-countdown',
-      '.card-metrics',
-      '.faq-item'
-    ];
+    // Helper para obtener rectángulos protegidos (tarjetas y textos que las mariposas NUNCA deben tapar)
+    function getAvoidanceZones() {
+      const selectors = [
+        '.command-card',
+        '.brigade-card',
+        '.species-card',
+        '.event-card',
+        '.agenda-card',
+        '.manifesto-card',
+        '.step-card',
+        '.contact-card',
+        '.contact-hub-card',
+        '.spotlight-card',
+        '.about-highlight-box',
+        '.faq-item',
+        '.section-header',
+        '.hero-header-center',
+        '.cta-banner-card'
+      ];
 
-    // Crear elementos de mariposa en el DOM
+      const zones = [];
+      const vh = window.innerHeight;
+      const vw = window.innerWidth;
+      const pad = 42; // Margen de seguridad amplio alrededor de cada cuadro
+
+      selectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+          const rect = el.getBoundingClientRect();
+          // Solo considerar elementos que intersecten el viewport
+          if (rect.bottom >= -50 && rect.top <= vh + 50 && rect.right >= -50 && rect.left <= vw + 50) {
+            zones.push({
+              left: rect.left - pad,
+              top: rect.top - pad,
+              right: rect.right + pad,
+              bottom: rect.bottom + pad,
+              cx: (rect.left + rect.right) / 2,
+              cy: (rect.top + rect.bottom) / 2,
+              width: rect.width + pad * 2,
+              height: rect.height + pad * 2
+            });
+          }
+        });
+      });
+      return zones;
+    }
+
+    // Helper para generar waypoints aleatorios que caigan estrictamente en zonas abiertas
+    function getOpenFlightWaypoint(avoidZones) {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const zones = avoidZones || getAvoidanceZones();
+
+      for (let attempt = 0; attempt < 30; attempt++) {
+        // Preferir márgenes laterales, cielo superior y fondos abiertos
+        let candX, candY;
+        const sideBias = Math.random();
+        if (sideBias < 0.35) {
+          // Margen izquierdo abierto
+          candX = 40 + Math.random() * Math.min(vw * 0.22, 280);
+        } else if (sideBias < 0.70) {
+          // Margen derecho abierto
+          candX = vw - (40 + Math.random() * Math.min(vw * 0.22, 280));
+        } else {
+          // Centro o cielo abierto
+          candX = 60 + Math.random() * (vw - 120);
+        }
+        candY = 70 + Math.random() * (vh - 140);
+
+        // Verificar que no caiga dentro de ninguna zona protegida
+        const hit = zones.some(z =>
+          candX >= z.left && candX <= z.right && candY >= z.top && candY <= z.bottom
+        );
+
+        if (!hit) {
+          return { x: candX, y: candY };
+        }
+      }
+
+      // Si el viewport está muy congestionado, colocar en los extremos de los márgenes
+      return {
+        x: Math.random() < 0.5 ? 50 : vw - 60,
+        y: 80 + Math.random() * (vh - 160)
+      };
+    }
+
+    // Instanciar mariposas con física de vuelo orgánico: Flutter-and-Glide
     const butterflies = butterfliesData.map((data, idx) => {
       const el = document.createElement('div');
       el.className = 'park-butterfly';
@@ -1888,119 +1954,143 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const winW = window.innerWidth;
       const winH = window.innerHeight;
+      const initialPoint = getOpenFlightWaypoint();
 
       return {
         el,
-        x: idx === 0 ? winW * 0.25 : winW * 0.75,
-        y: idx === 0 ? winH * 0.35 : winH * 0.65,
-        targetX: winW * 0.5,
-        targetY: winH * 0.5,
+        x: idx === 0 ? 80 : (idx === 1 ? winW - 90 : winW * 0.5),
+        y: 100 + idx * 140,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: (Math.random() - 0.5) * 1.5,
+        targetX: initialPoint.x,
+        targetY: initialPoint.y,
         currentAngle: 0,
-        speed: data.speed,
-        state: 'FLYING', // 'FLYING' o 'PERCHED'
-        perchTimeRemaining: 0,
-        wobblePhase: Math.random() * Math.PI * 2,
-        wobbleSpeed: 0.04 + Math.random() * 0.03
+        targetAngle: 0,
+        baseSpeed: data.baseSpeed,
+        mode: 'FLUTTER', // 'FLUTTER' (aleteo con impulso) o 'GLIDE' (planeo suave)
+        modeTimer: 60 + Math.floor(Math.random() * 50),
+        flutterPhase: Math.random() * Math.PI * 2,
+        breezePhase: Math.random() * Math.PI * 2,
+        tilt: 0
       };
     });
 
-    // Helper para obtener un punto de posado encima de una tarjeta en el viewport
-    function getAttractivePerchPoint() {
-      const candidates = [];
-      const vh = window.innerHeight;
-      const vw = window.innerWidth;
-
-      cardSelectors.forEach(sel => {
-        document.querySelectorAll(sel).forEach(card => {
-          const rect = card.getBoundingClientRect();
-          // Solo considerar tarjetas que estén al menos 50% visibles en la ventana
-          if (rect.top >= -50 && rect.bottom <= vh + 50 && rect.right > 0 && rect.left < vw) {
-            // Puntos atractivos de posado: esquinas superiores o bordes
-            candidates.push({ x: rect.left + 24, y: rect.top + 8 });
-            candidates.push({ x: rect.right - 35, y: rect.top + 10 });
-            candidates.push({ x: rect.left + rect.width * 0.45, y: rect.top + 6 });
-          }
-        });
-      });
-
-      if (candidates.length > 0) {
-        return candidates[Math.floor(Math.random() * candidates.length)];
-      }
-
-      // Si no hay tarjetas visibles (por ejemplo en el hero puro), posarse cerca de una rama
-      return {
-        x: Math.max(60, Math.min(vw - 60, Math.random() * vw)),
-        y: Math.max(80, Math.min(vh - 120, Math.random() * vh))
-      };
-    }
-
-    // Inicializar metas
-    butterflies.forEach(b => {
-      const p = getAttractivePerchPoint();
-      b.targetX = p.x;
-      b.targetY = p.y;
-    });
-
-    // Bucle de física de vuelo y posado a 60 FPS
+    // Bucle de animación a 60 FPS con física natural de aleteo y planeo
     let bLoopRunning = true;
     document.addEventListener('visibilitychange', () => {
       bLoopRunning = !document.hidden;
     });
 
+    let frameCount = 0;
+    let cachedZones = getAvoidanceZones();
+
     function butterflyLoop() {
       if (bLoopRunning) {
+        frameCount++;
+        if (frameCount % 45 === 0) {
+          cachedZones = getAvoidanceZones();
+        }
+
         const vw = window.innerWidth;
         const vh = window.innerHeight;
 
         butterflies.forEach(b => {
-          b.wobblePhase += b.wobbleSpeed;
+          b.flutterPhase += 0.18;
+          b.breezePhase += 0.025;
+          b.modeTimer--;
 
-          if (b.state === 'FLYING') {
-            b.el.classList.remove('perched');
-
-            const dx = b.targetX - b.x;
-            const dy = b.targetY - b.y;
-            const dist = Math.hypot(dx, dy);
-
-            // Aleteo y curva senoidal de vuelo natural
-            const sideWobble = Math.sin(b.wobblePhase) * 2.8;
-            const liftWobble = Math.cos(b.wobblePhase * 1.5) * 1.6;
-
-            if (dist > 16) {
-              // Movimiento suave hacia el objetivo
-              b.x += dx * b.speed + sideWobble;
-              b.y += dy * b.speed + liftWobble;
-
-              // Calcular orientación tridimensional de la mariposa
-              const desiredAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
-              let diff = desiredAngle - b.currentAngle;
-              while (diff < -180) diff += 360;
-              while (diff > 180) diff -= 360;
-              b.currentAngle += diff * 0.08;
-
-              b.el.style.transform = `translate3d(${b.x.toFixed(1)}px, ${b.y.toFixed(1)}px, 0) rotate(${b.currentAngle.toFixed(1)}deg)`;
+          // Alternar entre impulsos de aleteo (flutter) y planeo suave (glide)
+          if (b.modeTimer <= 0) {
+            if (b.mode === 'FLUTTER') {
+              b.mode = 'GLIDE';
+              b.modeTimer = 40 + Math.floor(Math.random() * 45); // ~0.7 a 1.4s de planeo
+              b.el.classList.add('gliding');
             } else {
-              // ¡Llegó al recuadro! Se posa encima
-              b.state = 'PERCHED';
-              b.perchTimeRemaining = 240 + Math.floor(Math.random() * 180); // 4 a 7 segundos posada
-              b.el.classList.add('perched');
-            }
-          } else if (b.state === 'PERCHED') {
-            b.perchTimeRemaining--;
-
-            // Micro-bamboleo sutil mientras está posada disfrutando del sol
-            const perchBreeze = Math.sin(b.wobblePhase * 0.5) * 1.5;
-            b.el.style.transform = `translate3d(${b.x.toFixed(1)}px, ${b.y.toFixed(1)}px, 0) rotate(${(b.currentAngle + perchBreeze).toFixed(1)}deg)`;
-
-            // Si se acaba el tiempo de descanso, despegar hacia otro recuadro
-            if (b.perchTimeRemaining <= 0) {
-              b.state = 'FLYING';
-              b.el.classList.remove('perched');
-              const newPoint = getAttractivePerchPoint();
-              b.targetX = newPoint.x;
-              b.targetY = newPoint.y;
+              b.mode = 'FLUTTER';
+              b.modeTimer = 50 + Math.floor(Math.random() * 60); // ~0.8 a 1.8s de aleteo
+              b.el.classList.remove('gliding');
             }
           }
+
+          // Vector de dirección al objetivo libre
+          let toTargetX = b.targetX - b.x;
+          let toTargetY = b.targetY - b.y;
+          let dist = Math.hypot(toTargetX, toTargetY) || 1;
+
+          // Si llegó cerca del waypoint o lleva mucho tiempo, elegir nuevo waypoint libre
+          if (dist < 50 || Math.random() < 0.003) {
+            const nextPoint = getOpenFlightWaypoint(cachedZones);
+            b.targetX = nextPoint.x;
+            b.targetY = nextPoint.y;
+            toTargetX = b.targetX - b.x;
+            toTargetY = b.targetY - b.y;
+            dist = Math.hypot(toTargetX, toTargetY) || 1;
+          }
+
+          // Fuerza suave de navegación hacia el objetivo
+          let steerX = (toTargetX / dist) * 0.12;
+          let steerY = (toTargetY / dist) * 0.12;
+
+          // FUERZA REPULSIVA: Desviar de inmediato si se acerca a cualquier cuadro de información
+          cachedZones.forEach(z => {
+            const nearLeft = b.x >= z.left - 40 && b.x <= z.right + 40;
+            const nearTop = b.y >= z.top - 40 && b.y <= z.bottom + 40;
+            if (nearLeft && nearTop) {
+              const diffX = b.x - z.cx;
+              const diffY = b.y - z.cy;
+              const dBox = Math.hypot(diffX, diffY) || 1;
+              const push = Math.max(0.4, 2.5 - dBox * 0.015);
+              steerX += (diffX / dBox) * push;
+              steerY += (diffY / dBox) * push;
+            }
+          });
+
+          // Física de vuelo según modo
+          if (b.mode === 'FLUTTER') {
+            // Impulso de alas: zig-zag lateral y pequeña sustentación hacia arriba
+            const liftImpulse = -Math.sin(b.flutterPhase) * 0.35;
+            const sideSway = Math.cos(b.flutterPhase * 1.4) * 0.40;
+            b.vx += steerX + sideSway * 0.25;
+            b.vy += steerY + liftImpulse;
+          } else {
+            // Modo Planeo: desaceleración suave, deriva con la brisa y leve caída parabólica
+            const breeze = Math.sin(b.breezePhase) * 0.18;
+            b.vx = b.vx * 0.965 + steerX * 0.6 + breeze;
+            b.vy = b.vy * 0.965 + steerY * 0.6 + 0.12; // Leve gravedad de planeo
+          }
+
+          // Limitar velocidad máxima para vuelo sereno y natural
+          const maxSpd = b.mode === 'FLUTTER' ? b.baseSpeed * 1.3 : b.baseSpeed * 0.9;
+          const currentSpd = Math.hypot(b.vx, b.vy);
+          if (currentSpd > maxSpd) {
+            b.vx = (b.vx / currentSpd) * maxSpd;
+            b.vy = (b.vy / currentSpd) * maxSpd;
+          }
+
+          // Actualizar posición
+          b.x += b.vx;
+          b.y += b.vy;
+
+          // Mantener dentro de los bordes visibles del viewport con rebote suave
+          if (b.x < 25) { b.x = 25; b.vx = Math.abs(b.vx) * 0.8; }
+          if (b.x > vw - 50) { b.x = vw - 50; b.vx = -Math.abs(b.vx) * 0.8; }
+          if (b.y < 45) { b.y = 45; b.vy = Math.abs(b.vy) * 0.8; }
+          if (b.y > vh - 60) { b.y = vh - 60; b.vy = -Math.abs(b.vy) * 0.8; }
+
+          // Orientación realista del cuerpo (sigue el vector de movimiento)
+          const motionHeading = Math.atan2(b.vy, b.vx) * (180 / Math.PI) + 90;
+          let angleDiff = motionHeading - b.currentAngle;
+          while (angleDiff < -180) angleDiff += 360;
+          while (angleDiff > 180) angleDiff -= 360;
+          b.currentAngle += angleDiff * 0.10;
+
+          // Inclinación 3D (banking) en curvas
+          b.tilt = Math.max(-25, Math.min(25, angleDiff * 0.8));
+
+          // Escala con micro-profundidad
+          const depthScale = 0.92 + Math.sin(b.flutterPhase * 0.5) * 0.08;
+
+          b.el.style.transform = `translate3d(${b.x.toFixed(1)}px, ${b.y.toFixed(1)}px, 0) rotate(${b.currentAngle.toFixed(1)}deg) rotateY(${b.tilt.toFixed(1)}deg) scale(${depthScale.toFixed(2)})`;
         });
       }
 
@@ -2009,16 +2099,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     requestAnimationFrame(butterflyLoop);
 
-    // Si el usuario hace scroll, actualizar suavemente las metas si la tarjeta se movió
+    // Al hacer scroll, recalcular zonas protegidas y reajustar metas
     window.addEventListener('scroll', () => {
+      cachedZones = getAvoidanceZones();
       butterflies.forEach(b => {
-        if (b.state === 'PERCHED') {
-          // Despegar ante scrolls bruscos para una sensación viva
-          b.state = 'FLYING';
-          const p = getAttractivePerchPoint();
-          b.targetX = p.x;
-          b.targetY = p.y;
-        }
+        // Si el scroll pone a la mariposa sobre una tarjeta, empujarla suavemente hacia fuera
+        cachedZones.forEach(z => {
+          if (b.x >= z.left && b.x <= z.right && b.y >= z.top && b.y <= z.bottom) {
+            b.targetX = b.x < z.cx ? z.left - 50 : z.right + 50;
+            b.targetY = b.y < z.cy ? z.top - 50 : z.bottom + 50;
+          }
+        });
       });
     }, { passive: true });
   }
