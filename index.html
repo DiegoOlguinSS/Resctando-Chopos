@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rescatando Chopos | Iniciativa Ciudadana · Parque Central Cuautitlán Izcalli</title>
+  <meta name="description"
+    content="Iniciativa ciudadana para rescatar, restaurar y preservar el Área Natural Protegida Parque Central en Cuautitlán Izcalli. Jornadas de limpieza, reforestación y educación ambiental.">
+  <meta name="keywords"
+    content="Rescatando Chopos, Parque Central Cuautitlán Izcalli, Arcos del Alba, reforestación, medioambiente, área natural protegida">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Tipografía Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Lienzo Orgánico Vivo: Árbol Chopo Ascendente con Ramas y Hojas en Zigzag -->
+  <div id="living-tree-background" class="living-tree-background" aria-hidden="true">
+    <svg id="living-tree-svg" class="living-tree-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Gradientes para tronco de chopo, corteza, ramas y savia vital -->
+        <linearGradient id="trunkBarkGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#2a1b0e" />
+          <stop offset="35%" stop-color="#3d2a17" />
+          <stop offset="70%" stop-color="#553f24" />
+          <stop offset="100%" stop-color="#695133" />
+        </linearGradient>
+        <linearGradient id="sapCoreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#65a30d" stop-opacity="0.6" />
+          <stop offset="40%" stop-color="#a3e635" stop-opacity="0.95" />
+          <stop offset="75%" stop-color="#bef264" stop-opacity="1" />
+          <stop offset="100%" stop-color="#d9f99d" stop-opacity="0.8" />
+        </linearGradient>
+        <radialGradient id="rootEarthGrad" cx="50%" cy="100%" r="60%">
+          <stop offset="0%" stop-color="#140d07" stop-opacity="0.95" />
+          <stop offset="50%" stop-color="#24180d" stop-opacity="0.75" />
+          <stop offset="100%" stop-color="#24180d" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="rootBarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#3d2a17" />
+          <stop offset="50%" stop-color="#26190d" />
+          <stop offset="100%" stop-color="#140c06" />
+        </linearGradient>
+        <linearGradient id="rootMossGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#556e25" stop-opacity="0.9" />
+          <stop offset="100%" stop-color="#2c3a11" stop-opacity="0.3" />
+        </linearGradient>
+        <radialGradient id="soilMoundGrad" cx="50%" cy="85%" r="70%">
+          <stop offset="0%" stop-color="#0f1908" stop-opacity="0.85" />
+          <stop offset="60%" stop-color="#14210a" stop-opacity="0.5" />
+          <stop offset="100%" stop-color="#18240f" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="rootFluteGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#4a3520" />
+          <stop offset="50%" stop-color="#2c1c0f" />
+          <stop offset="100%" stop-color="#140c06" />
+        </linearGradient>
+        <radialGradient id="humusBedGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#0a1205" stop-opacity="0.95" />
+          <stop offset="60%" stop-color="#111c08" stop-opacity="0.65" />
+          <stop offset="100%" stop-color="#18260d" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="mossClusterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#84cc16" />
+          <stop offset="50%" stop-color="#4d7c0f" />
+          <stop offset="100%" stop-color="#1f3704" />
+        </linearGradient>
+        <filter id="sapPulseGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="3.5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- Grupos dinámicos renderizados por app.js -->
+      <g id="tree-roots-group" class="tree-roots-group"></g>
+      <g id="tree-trunk-group" class="tree-trunk-group"></g>
+      <g id="tree-branches-group" class="tree-branches-group"></g>
+      <g id="tree-foliage-group" class="tree-foliage-group"></g>
+    </svg>
+  </div>
+
+  <!-- Capa Interactiva de Hojas Flotantes Tridimensionales y Esporas Botánicas -->
+  <canvas id="floating-leaves-canvas" class="floating-leaves-canvas" aria-hidden="true"></canvas>
+
+  <!-- Santuario de Mariposas del Parque Central (Animación Sutil y Ecológica) -->
+  <div id="butterfly-sanctuary" class="butterfly-sanctuary" aria-hidden="true"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="top-bar-notice">
+        <span class="pulse-dot"></span>
+        <span><strong>Área Natural Protegida Parque Central</strong></span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="mailto:rescatandochopos@gmail.com" class="top-link" id="quick-email-btn" title="Copiar correo">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>rescatandochopos@gmail.com</span>
+        </a>
+        <a href="https://instagram.com/rescatandochopos" target="_blank" rel="noopener noreferrer" class="top-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span>@rescatandochopos</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header" id="navbar">
+    <div class="nav-inner">
+      <a href="#inicio" class="brand-link">
+        <img src="assets/logo.png" alt="Logotipo Rescatando Chopos" class="brand-logo-img">
+        <div class="brand-info">
+          <span class="brand-title">Rescatando Chopos</span>
+          <span class="brand-subtitle">Parque Central · Cuautitlán Izcalli</span>
+        </div>
+      </a>
+
+      <nav class="nav-center">
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="#inicio" class="nav-item-link active">Inicio</a></li>
+          <li><a href="#mision" class="nav-item-link">El Parque</a></li>
+          <li><a href="#brigadas" class="nav-item-link">Líneas de Acción</a></li>
+          <li><a href="#biodiversidad" class="nav-item-link">Biodiversidad</a></li>
+          <li><a href="#agenda" class="nav-item-link">Jornadas</a></li>
+          <li><a href="#contacto" class="nav-item-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-primary btn-sm open-modal-btn" data-brigade="General">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          <span>Quiero ser voluntario</span>
+        </button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú de navegación">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section: Panorámico Inmersivo Edge-to-Edge estilo Haven -->
+  <section class="hero-panoramic-section" id="inicio">
+    <!-- Capa de fondo panorámica con siluetas de chopos y niebla matutina -->
+    <div class="hero-backdrop"></div>
+    <div class="hero-atmosphere-gradient"></div>
+
+    <!-- Hojas orgánicas flotantes decorativas en capa absoluta aislada -->
+    <div class="hero-leaf-overlay" aria-hidden="true">
+      <svg class="leaf-particle leaf-particle-1" viewBox="0 0 24 24" fill="#64822c">
+        <path
+          d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-10 6-1.5 3-1 6-1 6s2.5-3 6-7z" />
+      </svg>
+      <svg class="leaf-particle leaf-particle-2" viewBox="0 0 24 24" fill="#83a83a">
+        <path
+          d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-10 6-1.5 3-1 6-1 6s2.5-3 6-7z" />
+      </svg>
+      <svg class="leaf-particle leaf-particle-3" viewBox="0 0 24 24" fill="#64822c">
+        <path
+          d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-10 6-1.5 3-1 6-1 6s2.5-3 6-7z" />
+      </svg>
+    </div>
+
+    <div class="container hero-container">
+      <!-- Encabezado editorial central de alto impacto -->
+      <div class="hero-header-center fade-in-up">
+        <h1 class="hero-main-title">
+          Cuidemos juntos el <span class="highlight-title">pulmón verde</span><br>de Cuautitlán Izcalli.
+        </h1>
+
+        <p class="hero-main-subtitle">
+          Iniciativa ciudadana para rescatar, restaurar y preservar el Área Natural Protegida Parque Central.
+          Reforestamos con chopos nativos, limpiamos cañadas y construimos un espacio de vida para toda la comunidad.
+        </p>
+
+        <div class="hero-action-buttons">
+          <a href="#agenda" class="btn btn-primary btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Ver próximas brigadas</span>
+          </a>
+          <a href="#mision" class="btn btn-secondary btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Conocer el Parque</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tablero Flotante de Mando Estilo Haven (Overlapping Glass Cards) -->
+      <div class="hero-command-center fade-in-up">
+
+        <!-- Tarjeta 1: Próxima Jornada & Cuenta Regresiva Viva -->
+        <div class="command-card card-countdown">
+          <div class="command-card-header">
+            <span class="command-card-pill">📅 Próxima Jornada</span>
+            <span class="live-dot-mini"></span>
+          </div>
+          <h3 class="command-card-title">Saneamiento y Cajetes de Chopos</h3>
+          <p class="command-card-meta">
+            <span>Sábado 11 Octubre · 08:30 AM</span>
+            <span class="command-location-tag">📍 Kiosko Arcos del Alba</span>
+          </p>
+
+          <!-- Widget de Cuenta Regresiva -->
+          <div class="countdown-widget" id="countdown-timer">
+            <div class="countdown-box">
+              <span class="countdown-num" id="cd-days">07</span>
+              <span class="countdown-lbl">Días</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-box">
+              <span class="countdown-num" id="cd-hours">14</span>
+              <span class="countdown-lbl">Horas</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-box">
+              <span class="countdown-num" id="cd-mins">32</span>
+              <span class="countdown-lbl">Min</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-box">
+              <span class="countdown-num" id="cd-secs">50</span>
+              <span class="countdown-lbl">Seg</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-sm open-modal-btn" data-brigade="Jornada 11 de Octubre"
+            style="width: 100%;">
+            <span>Anotarme a esta fecha</span>
+          </button>
+        </div>
+
+        <!-- Tarjeta 2: Métricas de Impacto con Barra de Meta Comunitaria -->
+        <div class="command-card card-metrics">
+          <div class="command-card-header">
+            <span class="command-card-pill pill-olive">🌱 Impacto Acumulado</span>
+            <span class="verified-tag">100% Vecinal</span>
+          </div>
+
+          <div class="command-stats-grid">
+            <div class="cstat-item">
+              <div class="cstat-num"><span class="counter" data-target="850">0</span>+</div>
+              <div class="cstat-label">Árboles cuidados</div>
+            </div>
+            <div class="cstat-item">
+              <div class="cstat-num"><span class="counter" data-target="2.8" data-decimal="1">0</span> tn</div>
+              <div class="cstat-label">Basura retirada</div>
+            </div>
+            <div class="cstat-item">
+              <div class="cstat-num"><span class="counter" data-target="340">0</span>+</div>
+              <div class="cstat-label">Voluntarios</div>
+            </div>
+          </div>
+
+          <div class="goal-progress-wrap">
+            <div class="goal-header">
+              <span>Meta 2026: <strong>1,000 chopos protegidos</strong></span>
+              <span class="goal-pct">85%</span>
+            </div>
+            <div class="goal-track">
+              <div class="goal-bar" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <p class="command-card-footnote">
+            Protegemos la recarga de mantos acuíferos y reducimos las islas de calor en Cuautitlán Izcalli.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Misión y El Área Natural Protegida -->
+  <section class="section section-alt" id="mision">
+    <div class="container about-grid">
+      <div class="about-text fade-in-up">
+        <div class="section-eyebrow">
+          <span class="badge badge-olive">Nuestra Razón de Ser</span>
+        </div>
+        <h2 class="section-title">¿Por qué proteger el Parque Central y sus Chopos?</h2>
+        <p class="about-highlight-box">
+          “Somos una iniciativa ciudadana para rescatar, restaurar y preservar el Área Natural Protegida Parque
+          Central.”
+        </p>
+        <p>
+          En medio del crecimiento urbano de Cuautitlán Izcalli, el <strong>Parque Central</strong> representa un oasis
+          biológico fundamental. Alberga decenas de árboles majestuosos, entre ellos los emblemáticos <strong>chopos
+            (álamos)</strong>, caracterizados por su altura, su capacidad para oxigenar el entorno y capturar dióxido de
+          carbono.
+        </p>
+
+        <div class="feature-bullets">
+          <div class="bullet-item">
+            <div class="bullet-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+              </svg>
+            </div>
+            <div class="bullet-text">
+              <h4>Recarga hídrica y microclima</h4>
+              <p>Los chopos ayudan a retener humedad en el suelo y reducen las islas de calor en las colonias
+                circundantes como Arcos del Alba.</p>
+            </div>
+          </div>
+
+          <div class="bullet-item">
+            <div class="bullet-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+              </svg>
+            </div>
+            <div class="bullet-text">
+              <h4>Espacio de paz y convivencia familiar</h4>
+              <p>Un parque limpio y vivo es el mejor entorno para que niñas, niños, adultos mayores y mascotas disfruten
+                con seguridad.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn btn-primary open-modal-btn" data-brigade="General">
+            <span>Súmate a la causa</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Galería Fotográfica Real del Parque Central -->
+      <div class="about-gallery fade-in-up">
+        <div class="about-img-card tall" data-lightbox="assets/caminata-reconocimiento.jpg"
+          data-caption="Caminata comunitaria de reconocimiento y monitoreo ecológico entre los senderos y arbolado del Parque Central, Cuautitlán Izcalli."
+          style="cursor: pointer;">
+          <img src="assets/caminata-reconocimiento.jpg"
+            alt="Vecinos y voluntarios en caminata de reconocimiento en Parque Central">
+          <span class="img-badge">🚶‍♀️ Caminata y Monitoreo Vecinal</span>
+        </div>
+        <div class="about-img-card" data-lightbox="assets/flores-silvestres.jpg"
+          data-caption="Mirasoles y flores silvestres en los pastizales del Parque Central. Un refugio vital para abejas, mariposas y colibríes en medio de la ciudad."
+          style="cursor: pointer;">
+          <img src="assets/flores-silvestres.jpg"
+            alt="Flores silvestres y pradera natural en el Parque Central de Izcalli">
+          <span class="img-badge">🌸 Biodiversidad y Flora Silvestre</span>
+        </div>
+        <div class="about-img-card"
+          style="background: linear-gradient(135deg, var(--chopo-olive) 0%, var(--chopo-olive-dark) 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; text-align: center; color: white;">
+          <img src="assets/logo.png" alt="Logo Rescatando Chopos"
+            style="width: 74px; height: 74px; border-radius: 14px; margin-bottom: 0.75rem; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+          <strong style="font-size: 1.05rem; letter-spacing: -0.01em;">Rescatando Chopos</strong>
+          <span style="font-size: 0.8rem; opacity: 0.85; margin-top: 0.25rem;">Comunidad Parque Central · Izcalli</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Líneas de Acción / Nuestras 4 Brigadas -->
+  <section class="section" id="brigadas">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <div class="section-eyebrow">
+          <span class="badge badge-amber">Acción en el Terreno</span>
+        </div>
+        <h2 class="section-title">Nuestras Líneas de Acción Ciudadana</h2>
+        <p class="section-subtitle">
+          Trabajamos de forma metódica y respetuosa con el ecosistema. Cada jornada tiene un propósito concreto para
+          revitalizar el área natural.
+        </p>
+      </div>
+
+      <div class="brigades-grid">
+        <!-- Tarjeta 1: Reforestación y Salud del Arbolado -->
+        <div class="brigade-card fade-in-up">
+          <div class="brigade-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L4 14h5v8h6v-8h5z" />
+            </svg>
+          </div>
+          <h3 class="brigade-title">Reforestación y Salud de Chopos</h3>
+          <p class="brigade-desc">
+            Plantación técnica de especies nativas, colocación de tutores de bambú, cajetes para captación de lluvia y
+            monitoreo continuo contra plagas.
+          </p>
+          <div class="brigade-tags">
+            <span class="mini-tag">Árboles nativos</span>
+            <span class="mini-tag">Riego comunitario</span>
+            <span class="mini-tag">Cajetes</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Jornadas de Limpieza -->
+        <div class="brigade-card card-amber fade-in-up">
+          <div class="brigade-icon-wrap" style="background: var(--chopo-amber-soft); color: var(--chopo-amber-dark);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </div>
+          <h3 class="brigade-title">Limpieza y Saneamiento</h3>
+          <p class="brigade-desc">
+            Retiro y separación de residuos inorgánicos, llantas y escombro acumulado en senderos y cañadas. Devolvemos
+            la dignidad a las áreas públicas.
+          </p>
+          <div class="brigade-tags">
+            <span class="mini-tag">Reciclaje</span>
+            <span class="mini-tag">Cero basura</span>
+            <span class="mini-tag">Senderos limpios</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Conservación de Fauna y Polinizadores -->
+        <div class="brigade-card card-teal fade-in-up">
+          <div class="brigade-icon-wrap" style="background: var(--chopo-teal-soft); color: var(--chopo-teal);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 21a9 9 0 0 0 9-9c0-4.97-4.03-9-9-9s-9 4.03-9 9a9 9 0 0 0 9 9z"></path>
+              <path d="M12 7v5l3 3"></path>
+            </svg>
+          </div>
+          <h3 class="brigade-title">Monitoreo de Biodiversidad</h3>
+          <p class="brigade-desc">
+            Identificación de aves migratorias, fomento de jardines para polinizadores (abejas, mariposas y colibríes) y
+            preservación de la flora nativa del Estado de México.
+          </p>
+          <div class="brigade-tags">
+            <span class="mini-tag">Aves de Izcalli</span>
+            <span class="mini-tag">Polinizadores</span>
+            <span class="mini-tag">Ciencia ciudadana</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta 4: Talleres y Educación Ambiental -->
+        <div class="brigade-card fade-in-up">
+          <div class="brigade-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 class="brigade-title">Educación y Comunidad</h3>
+          <p class="brigade-desc">
+            Talleres para niñas, niños y familias: composta casera, cuidado del agua, manualidades recicladas y
+            caminatas guiadas de reconocimiento natural.
+          </p>
+          <div class="brigade-tags">
+            <span class="mini-tag">Familias</span>
+            <span class="mini-tag">Talleres gratis</span>
+            <span class="mini-tag">Convivencia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Destacada: Comunidad en Acción ("Pequeñas acciones, grandes cambios") -->
+  <section class="community-spotlight-section" id="comunidad">
+    <div class="container">
+      <div class="spotlight-card fade-in-up">
+        <div class="spotlight-media" data-lightbox="assets/brigada-palas-jovenes.jpg"
+          data-caption="Jóvenes brigadistas y vecinos de Cuautitlán Izcalli en acción comunitaria con palas y herramientas en el Parque Central. 'Pequeñas acciones, grandes cambios'.">
+          <img src="assets/brigada-palas-jovenes.jpg" alt="Brigadistas comunitarios con palas en el Parque Central"
+            class="spotlight-img">
+          <div class="spotlight-badge">
+            <span>✨ Comunidad Parque Central</span>
+          </div>
+        </div>
+
+        <div class="spotlight-info">
+          <div class="section-eyebrow">
+            <span class="badge badge-amber">Juventud y Vecindad Unida</span>
+          </div>
+          <h2 class="spotlight-title">
+            "Pequeñas acciones, <span>grandes cambios</span>."
+          </h2>
+          <p class="spotlight-text">
+            La transformación del Área Natural Protegida Parque Central no ocurre desde un escritorio: sucede cuando
+            vecinas, vecinos, jóvenes y familias toman una pala, siembran un árbol y limpian con orgullo su entorno.
+          </p>
+
+          <div class="spotlight-features">
+            <div class="spotlight-feat-item">
+              <div class="spotlight-feat-icon">🌱</div>
+              <div>
+                <h5>Manos que Reforestan</h5>
+                <p>Jóvenes organizados para dar mantenimiento y protección a los chopos y arbolado nativo.</p>
+              </div>
+            </div>
+            <div class="spotlight-feat-item">
+              <div class="spotlight-feat-icon">🤝</div>
+              <div>
+                <h5>Red Solidaria Vecinal</h5>
+                <p>Un espacio donde vecinas y vecinos de Arcos del Alba y todo Izcalli conviven sanamente.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+            <button class="btn btn-primary open-modal-btn" data-brigade="Brigada con Palas y Reforestación">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>¡Quiero tomar una pala y sumarme!</span>
+            </button>
+            <button class="btn btn-secondary" onclick="document.querySelector('.spotlight-media').click()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+              <span>Ver foto completa</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Guía Interactiva de Biodiversidad del Parque Central -->
+  <section class="section section-biodiversity" id="biodiversidad">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <div class="section-eyebrow">
+          <span class="badge badge-teal">Ecosistema y Vida Silvestre</span>
+        </div>
+        <h2 class="section-title">Especies que Protegemos en Cuautitlán Izcalli</h2>
+        <p class="section-subtitle">
+          El Parque Central no es solo un conjunto de senderos: es un refugio biológico donde coexisten árboles
+          majestuosos, polinizadores indispensables y aves migratorias en medio de la mancha urbana.
+        </p>
+
+        <!-- Filtros interactivos -->
+        <div class="bio-filter-group">
+          <button class="bio-filter-btn active" data-bio-filter="all">Todas las Especies</button>
+          <button class="bio-filter-btn" data-bio-filter="arboles">Árboles y Bosque</button>
+          <button class="bio-filter-btn" data-bio-filter="polinizadores">Flora & Polinizadores</button>
+          <button class="bio-filter-btn" data-bio-filter="fauna">Aves y Fauna</button>
+        </div>
+      </div>
+
+      <div class="bio-grid fade-in-up">
+
+        <!-- Ficha 1: El Chopo / Álamo -->
+        <div class="bio-card" data-bio-category="arboles">
+          <div class="bio-card-media" data-lightbox="assets/parque-chopos.jpg"
+            data-caption="Árboles de Chopo (Populus) en el Parque Central de Cuautitlán Izcalli. Filtradores naturales de aire y reguladores térmicos.">
+            <img src="assets/parque-chopos.jpg" alt="Árboles de chopo en Parque Central Izcalli">
+            <span class="bio-category-tag tag-tree">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 3px;"><path d="M12 2L4 14h5v8h6v-8h5z"/></svg>
+              Arbolado Insignia
+            </span>
+          </div>
+          <div class="bio-card-body">
+            <h3 class="bio-title">Chopo Americano (Populus deltoides)</h3>
+            <p class="bio-desc">
+              Árbol de porte esbelto y rápido crecimiento que puede alcanzar hasta 25-30 metros de altura. Es el emblema
+              de nuestra identidad vecinal.
+            </p>
+            <div class="bio-specs-list">
+              <div class="bio-spec-item">
+                <span class="spec-label">Captura de carbono</span>
+                <span class="spec-val">~22 kg de CO₂ al año por árbol maduro</span>
+              </div>
+              <div class="bio-spec-item">
+                <span class="spec-label">Función ecológica</span>
+                <span class="spec-val">Regulador térmico y recarga de mantos freáticos</span>
+              </div>
+              <div class="bio-spec-item">
+                <span class="spec-label">Estatus en el parque</span>
+                <span class="spec-val text-success">Bajo monitoreo y protección ciudadana</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ficha 2: Mirasoles y Flora Silvestre -->
+        <div class="bio-card" data-bio-category="polinizadores">
+          <div class="bio-card-media" data-lightbox="assets/flores-silvestres.jpg"
+            data-caption="Mirasoles y flores silvestres en los pastizales del Parque Central. Banco biológico de polen para abejas y colibríes.">
+            <img src="assets/flores-silvestres.jpg" alt="Mirasoles y flores silvestres en Parque Central">
+            <span class="bio-category-tag tag-flower">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 3px;"><circle cx="12" cy="12" r="3"></circle><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0 8 0 4 4 0 0 0-4-4zM12 18a4 4 0 0 0-4 4 4 4 0 0 0 8 0 4 4 0 0 0-4-4zM2 12a4 4 0 0 0 4-4 4 4 0 0 0 0 8 4 4 0 0 0-4-4zM18 12a4 4 0 0 0 4-4 4 4 0 0 0 0 8 4 4 0 0 0-4-4z"/></svg>
+              Flora & Néctar
+            </span>
+          </div>
+          <div class="bio-card-body">
+            <h3 class="bio-title">Mirasoles Silvestres (Cosmos bipinnatus)</h3>
+            <p class="bio-desc">
+              Flores silvestres autóctonas de los pastizales del Estado de México. No son maleza: son la despensa
+              biológica más importante de insectos benéficos.
+            </p>
+            <div class="bio-specs-list">
+              <div class="bio-spec-item">
+                <span class="spec-label">Temporada de floración</span>
+                <span class="spec-val">Floración activa durante verano y otoño</span>
+              </div>
+              <div class="bio-spec-item">
+                <span class="spec-label">Especies polinizadoras</span>
+                <span class="spec-val">Abejas solitarias, abejorros y mariposas</span>
+              </div>
+              <div class="bio-spec-item">
+                <span class="spec-label">Manejo comunitario</span>
+                <span class="spec-val text-warning">Conservación y protección contra desbroce</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ficha 3: Aves y Polinizadores -->
+        <div class="bio-card" data-bio-category="fauna">
+          <div class="bio-card-media" data-lightbox="assets/caminata-reconocimiento.jpg"
+            data-caption="Caminatas de monitoreo biológico y avistamiento de aves en los senderos arbolados del Parque Central.">
+            <img src="assets/caminata-reconocimiento.jpg" alt="Monitoreo de aves y senderos en Parque Central">
+            <span class="bio-category-tag tag-fauna">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 3px;"><path d="M12 21a9 9 0 0 0 9-9c0-4.97-4.03-9-9-9s-9 4.03-9 9a9 9 0 0 0 9 9z"></path><path d="M12 7v5l3 3"></path></svg>
+              Aves de Izcalli
+            </span>
+          </div>
+          <div class="bio-card-body">
+            <h3 class="bio-title">Carpintero Cheje & Colibríes</h3>
+            <p class="bio-desc">
+              El dosel de chopos maduros permite el anidamiento del pájaro carpintero y la visita constante de colibríes
+              pico ancho y tórtolas de collar.
+            </p>
+            <div class="bio-specs-list">
+              <div class="bio-spec-item">
+                <span class="spec-label">Especies registradas</span>
+                <span class="spec-val">18+ aves locales y migratorias en el parque</span>
+              </div>
+              <div class="bio-spec-item">
+                <span class="spec-label">Servicio ambiental</span>
+                <span class="spec-val">Control biológico natural de plagas e insectos</span>
+              </div>
+              <div class="bio-spec-item">
+                <span class="spec-label">Metodología</span>
+                <span class="spec-val">Ciencia ciudadana abierta y avistamientos vecinales</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ficha 4: Suelo y Cañadas Vivas -->
+        <div class="bio-card" data-bio-category="arboles">
+          <div class="bio-card-media" data-lightbox="assets/brigada-palas-jovenes.jpg"
+            data-caption="Jóvenes brigadistas preparando cajetes de retención de agua y tierra enriquecida con composta.">
+            <img src="assets/brigada-palas-jovenes.jpg" alt="Brigadistas cuidando el suelo y plantando brotes">
+            <span class="bio-category-tag tag-soil">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 3px;"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+              Suelo y Cajetes
+            </span>
+          </div>
+          <div class="bio-card-body">
+            <h3 class="bio-title">Cajetes de Infiltración Pluvial</h3>
+            <p class="bio-desc">
+              Pozuelos circulares cavados a mano alrededor de cada chopo para capturar el escurrimiento de lluvia,
+              evitar erosión y humedecer el subsuelo.
+            </p>
+            <div class="bio-specs-list">
+              <div class="bio-spec-item">
+                <span class="spec-label">Infraestructura de captación</span>
+                <span class="spec-val">Más de 350 cajetes circulares activos</span>
+              </div>
+              <div class="bio-spec-item">
+                <span class="spec-label">Técnica de retención</span>
+                <span class="spec-val">Acolchado de hojarasca y composta vecinal</span>
+              </div>
+              <div class="bio-spec-item">
+                <span class="spec-label">Tasa de supervivencia</span>
+                <span class="spec-val text-success">89% de brotes logrados exitosamente</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Próximas Jornadas / Agenda Comunitaria -->
+  <section class="section section-alt" id="agenda">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <div class="section-eyebrow">
+          <span class="badge badge-olive">Calendario Abierto</span>
+        </div>
+        <h2 class="section-title">Próximas Jornadas en el Parque Central</h2>
+        <p class="section-subtitle">
+          Todas las actividades son gratuitas y para todas las edades. Selecciona la jornada a la que deseas acudir para
+          recibir recordatorio e instrucciones.
+        </p>
+      </div>
+
+      <div class="events-wrapper">
+        <div class="events-list">
+          <!-- Evento 1 -->
+          <div class="event-card fade-in-up">
+            <div class="event-date-box">
+              <span class="event-day">11</span>
+              <span class="event-month">OCT</span>
+            </div>
+            <div class="event-content">
+              <span class="event-type-badge">🧹 Jornada de Limpieza y Separación</span>
+              <h3 class="event-title">Saneamiento de Senderos Principales</h3>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>08:30 AM – 11:30 AM</span>
+                </span>
+                <span class="event-meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>Acceso Arcos del Alba</span>
+                </span>
+              </div>
+            </div>
+            <div class="event-action">
+              <button class="btn btn-primary btn-sm open-modal-btn" data-brigade="Limpieza y Separación">
+                <span>Quiero asistir</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Evento 2 -->
+          <div class="event-card fade-in-up">
+            <div class="event-date-box"
+              style="background: var(--chopo-amber-soft); border-color: rgba(229,154,34,0.3);">
+              <span class="event-day" style="color: var(--chopo-amber-dark);">19</span>
+              <span class="event-month" style="color: var(--chopo-amber-dark);">OCT</span>
+            </div>
+            <div class="event-content">
+              <span class="event-type-badge"
+                style="background: var(--chopo-leaf-tint); color: var(--chopo-olive-dark);">🌱 Brigada de
+                Reforestación</span>
+              <h3 class="event-title">Mantenimiento de Brotes y Cajetes de Chopos</h3>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>09:00 AM – 12:00 PM</span>
+                </span>
+                <span class="event-meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>Kiosko del Parque Central</span>
+                </span>
+              </div>
+            </div>
+            <div class="event-action">
+              <button class="btn btn-primary btn-sm open-modal-btn" data-brigade="Reforestación y Cajetes">
+                <span>Quiero asistir</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Evento 3 -->
+          <div class="event-card fade-in-up">
+            <div class="event-date-box">
+              <span class="event-day">26</span>
+              <span class="event-month">OCT</span>
+            </div>
+            <div class="event-content">
+              <span class="event-type-badge">🎨 Taller Comunitario Familiar</span>
+              <h3 class="event-title">Avistamiento de Aves y Taller de Huerto Casero</h3>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>10:00 AM – 12:30 PM</span>
+                </span>
+                <span class="event-meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>Área de Pícnic Parque Central</span>
+                </span>
+              </div>
+            </div>
+            <div class="event-action">
+              <button class="btn btn-primary btn-sm open-modal-btn" data-brigade="Taller y Aves">
+                <span>Quiero asistir</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar de Tips para el Asistente -->
+        <div class="tips-sidebar-card fade-in-up">
+          <h4 class="tips-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span>Recomendaciones para asistir</span>
+          </h4>
+          <ul class="tips-list">
+            <li class="tip-item">
+              <span class="tip-item-icon">✓</span>
+              <span><strong>Ropa cómoda y gorra:</strong> Calzado cerrado o botas para terracería y protección
+                solar.</span>
+            </li>
+            <li class="tip-item">
+              <span class="tip-item-icon">✓</span>
+              <span><strong>Hidratación reutilizable:</strong> Lleva tu termo o cantimplora con agua para evitar
+                plásticos de un solo uso.</span>
+            </li>
+            <li class="tip-item">
+              <span class="tip-item-icon">✓</span>
+              <span><strong>Guantes de trabajo:</strong> Si tienes guantes de jardinería o carnaza, tráelos contigo. (Si
+                no tienes, prestamos algunos en el punto).</span>
+            </li>
+            <li class="tip-item">
+              <span class="tip-item-icon">✓</span>
+              <span><strong>Ambiente familiar y seguro:</strong> Puedes venir con tus hijos, abuelos o amigos; hay
+                actividades adaptadas para todos.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Manifiesto y Mensajes del Bosque Urbano (Gráficos Oficiales) -->
+  <section class="manifesto-section" id="manifiesto">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <div class="section-eyebrow">
+          <span class="badge badge-olive">Filosofía y Conciencia Ciudadana</span>
+        </div>
+        <h2 class="section-title">Mensajes del Bosque Urbano</h2>
+        <p class="section-subtitle">
+          Reflexiones nacidas de la tierra y del trabajo voluntario en el Parque Central de Cuautitlán Izcalli.
+        </p>
+      </div>
+
+      <div class="manifesto-grid">
+        <!-- Tarjeta Gráfica 1 -->
+        <div class="manifesto-card fade-in-up">
+          <div class="manifesto-img-wrapper" data-lightbox="assets/post-frase-futuro.png"
+            data-caption="Manifiesto oficial: 'Cuidar el Parque Central no es solo proteger un espacio, es proteger nuestra vida y nuestro futuro.'">
+            <img src="assets/post-frase-futuro.png" alt="Cuidar el Parque Central es proteger nuestra vida y futuro"
+              class="manifesto-img">
+            <div class="manifesto-zoom-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+              <span>Ampliar</span>
+            </div>
+          </div>
+          <div class="manifesto-content">
+            <div class="manifesto-tag">🌿 Compromiso y Legado</div>
+            <div class="manifesto-quote">"Cuidar el Parque Central no es solo proteger un espacio, es proteger nuestra
+              vida y nuestro futuro."</div>
+            <p style="font-size: 0.9rem; color: var(--chopo-text-muted); line-height: 1.6;">
+              Cada metro cuadrado reforestado y cada sendero libre de basura es una inversión directa en la salud, la
+              tranquilidad y el porvenir de nuestras familias en Arcos del Alba y Cuautitlán Izcalli.
+            </p>
+            <div class="manifesto-footer">
+              <span>Campaña Oficial · Rescatando Chopos</span>
+              <a href="https://instagram.com/rescatandochopos" target="_blank" rel="noopener noreferrer"
+                style="color: var(--chopo-olive); font-weight: 700; text-decoration: underline;">Ver en Instagram</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Gráfica 2 -->
+        <div class="manifesto-card fade-in-up">
+          <div class="manifesto-img-wrapper" data-lightbox="assets/post-frase-concreto.png"
+            data-caption="Manifiesto oficial: 'En cada árbol, lago e insecto late un recordatorio: la naturaleza resiste, incluso en medio del concreto.'">
+            <img src="assets/post-frase-concreto.png" alt="La naturaleza resiste incluso en medio del concreto"
+              class="manifesto-img">
+            <div class="manifesto-zoom-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+              <span>Ampliar</span>
+            </div>
+          </div>
+          <div class="manifesto-content">
+            <div class="manifesto-tag">🦋 Resiliencia del Ecosistema</div>
+            <div class="manifesto-quote">"En cada árbol, lago e insecto late un recordatorio: la naturaleza resiste,
+              incluso en medio del concreto."</div>
+            <p style="font-size: 0.9rem; color: var(--chopo-text-muted); line-height: 1.6;">
+              Frente a las autopistas y el asfalto, este pulmón verde respira. Con cada brote regado y cada árbol
+              protegido, demostramos que la vida siempre encuentra camino cuando la cuidamos juntos.
+            </p>
+            <div class="manifesto-footer">
+              <span>Campaña Oficial · Rescatando Chopos</span>
+              <a href="https://instagram.com/rescatandochopos" target="_blank" rel="noopener noreferrer"
+                style="color: var(--chopo-olive); font-weight: 700; text-decoration: underline;">Ver en Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Cómo Sumarte (4 Maneras Claras y Fáciles) -->
+  <section class="section" id="sumate">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <div class="section-eyebrow">
+          <span class="badge badge-amber">Colaboración Ciudadana</span>
+        </div>
+        <h2 class="section-title">4 Formas de Apoyar a Rescatando Chopos</h2>
+        <p class="section-subtitle">
+          No necesitas ser experto en botánica ni disponer de todo el día. Cualquier granito de arena cuenta.
+        </p>
+      </div>
+
+      <div class="join-grid">
+        <div class="join-card fade-in-up">
+          <div class="join-step-num">1</div>
+          <div class="join-icon-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 20h10" />
+              <path d="M12 20v-8" />
+              <path d="M12 12c0-3.5 2.5-6 6-6-1 2.5-1 4.5 0 6" />
+              <path d="M12 14c0-3-2-5-5-5 1 2 1 3.5 0 5" />
+            </svg>
+          </div>
+          <h3>Manos en la Tierra</h3>
+          <p>Asiste a nuestras jornadas de limpieza, siembra de árboles y riego comunal los fines de semana.</p>
+        </div>
+
+        <div class="join-card fade-in-up">
+          <div class="join-step-num">2</div>
+          <div class="join-icon-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+              <path d="m3.3 7 8.7 5 8.7-5" />
+              <path d="M12 22V12" />
+            </svg>
+          </div>
+          <h3>Dona Insumos</h3>
+          <p>Apóyanos con palas, costales, abono de composta, mangueras o brotes de árboles nativos de la región.</p>
+        </div>
+
+        <div class="join-card fade-in-up">
+          <div class="join-step-num">3</div>
+          <div class="join-icon-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 11 18-5v12L3 13v-2z" />
+              <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+            </svg>
+          </div>
+          <h3>Comparte en Redes</h3>
+          <p>Ayúdanos a visibilizar la causa compartiendo en Instagram y X para sumar a más colonos de Izcalli.</p>
+        </div>
+
+        <div class="join-card fade-in-up">
+          <div class="join-step-num">4</div>
+          <div class="join-icon-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </div>
+          <h3>Vigila y Reporta</h3>
+          <p>Si visitas el parque y notas tiraderos clandestinos o árboles en riesgo, avísanos para actuar de inmediato.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <button class="btn btn-primary btn-lg open-modal-btn" data-brigade="General">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          <span>Llenar formulario de voluntariado</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Contacto, Cómo Llegar y Visitas al Parque Central -->
+  <section class="section section-contact-hub" id="contacto">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <div class="section-eyebrow">
+          <span class="badge badge-teal">Conexión Ciudadana y Cómo Llegar</span>
+        </div>
+        <h2 class="section-title">Contacto y Visitas al Parque Central</h2>
+        <p class="section-subtitle">
+          Ya sea que quieras sumarte a la próxima brigada, proponer un proyecto escolar o vecinal, o reportar alguna
+          anomalía en el parque, estamos para escucharte.
+        </p>
+      </div>
+
+      <div class="contact-hub-grid fade-in-up">
+
+        <!-- Columna 1: Canales Directos y Reporte Vecinal -->
+        <div class="contact-channels-column">
+
+          <!-- Tarjetas de Correo e Instagram -->
+          <div class="contact-mini-cards">
+            <div class="contact-mini-card">
+              <div class="mini-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h5>Correo Electrónico</h5>
+                <span class="mini-address">rescatandochopos@gmail.com</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="copy-email-contact-btn" title="Copiar correo">
+                <span>Copiar</span>
+              </button>
+            </div>
+
+            <div class="contact-mini-card">
+              <div class="mini-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <div>
+                <h5>Instagram Oficial</h5>
+                <span class="mini-address">@rescatandochopos</span>
+              </div>
+              <a href="https://instagram.com/rescatandochopos" target="_blank" rel="noopener noreferrer"
+                class="btn btn-secondary btn-sm">
+                <span>Seguir</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Módulo de Reporte Ciudadano o Mensaje Rápido -->
+          <div class="citizen-report-card">
+            <h4>Buzón Ciudadano / Reporte Vecinal</h4>
+            <p>¿Detectaste ramas caídas, acumulación de escombro o deseas vincular a tu empresa/escuela?</p>
+
+            <form id="contact-quick-form" class="contact-form">
+              <div class="form-row-2">
+                <input type="text" id="c-name" class="form-input" placeholder="Tu nombre" required>
+                <input type="text" id="c-contact" class="form-input" placeholder="Teléfono o Correo" required>
+              </div>
+              <select id="c-topic" class="form-select">
+                <option value="Voluntariado General">Quiero unirme a la brigada</option>
+                <option value="Donación de herramientas o plantas">Deseo donar herramientas / árboles</option>
+                <option value="Reporte de anomalía en el parque">Reportar basura o árbol en riesgo</option>
+                <option value="Vinculación Escolar / Empresarial">Propuesta comunitaria / escuela</option>
+              </select>
+              <textarea id="c-message" class="form-textarea" placeholder="Describe brevemente tu mensaje o reporte..."
+                rows="3" required></textarea>
+              <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Enviar mensaje a Rescatando Chopos</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- Columna 2: Ubicación, Accesos y Mapa -->
+        <div class="contact-location-column">
+
+          <div class="location-details-card">
+            <div class="badge badge-olive">Punto de Encuentro Oficial</div>
+
+            <div class="loc-address-header">
+              <h3>Área Natural Protegida Parque Central</h3>
+              <p class="loc-street">Autopista Querétaro-México 34, Col. Arcos del Alba</p>
+              <p class="loc-city">Cuautitlán Izcalli, C.P. 54750, Estado de México</p>
+            </div>
+
+            <!-- Botones de navegación GPS -->
+            <div class="loc-action-buttons">
+              <a href="https://maps.google.com/?q=Autopista+Queretaro-Mexico+34+Arcos+del+Alba+Cuautitlan+Izcalli"
+                target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                </svg>
+                <span>Google Maps</span>
+              </a>
+              <a href="https://waze.com/ul?q=Autopista+Queretaro-Mexico+34+Arcos+del+Alba+Cuautitlan+Izcalli"
+                target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+                <span>Waze</span>
+              </a>
+              <button class="btn btn-secondary btn-sm" id="copy-address-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copiar dirección</span>
+              </button>
+            </div>
+
+            <!-- Formas de acceso -->
+            <div class="loc-modes-grid">
+              <div class="loc-mode-item">
+                <span class="mode-icon">🚗</span>
+                <div>
+                  <h6>En Automóvil</h6>
+                  <p>Por lateral Autopista México-Querétaro sentido sur, entronque directo con Arcos del Alba.</p>
+                </div>
+              </div>
+              <div class="loc-mode-item">
+                <span class="mode-icon">🚌</span>
+                <div>
+                  <h6>Transporte Público</h6>
+                  <p>Descenso sobre la autopista en puente peatonal Arcos del Alba o combis de Izcalli Centro.</p>
+                </div>
+              </div>
+              <div class="loc-mode-item">
+                <span class="mode-icon">🚶</span>
+                <div>
+                  <h6>A pie / En Bici</h6>
+                  <p>Accesos peatonales seguros por andadores vecinales de Arcos del Alba hacia el kiosko.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mapa Interactivo Integrado -->
+          <div class="map-interactive-container">
+            <iframe class="map-iframe-enhanced" title="Mapa del Área Natural Protegida Parque Central"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-99.2300%2C19.6400%2C-99.1900%2C19.6700&amp;layer=mapnik&amp;marker=19.6550%2C-99.2100"
+              loading="lazy">
+            </iframe>
+            <div class="map-overlay-info">
+              <span>📍 Punto de reunión de brigadas: Kiosko Central</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Preguntas Frecuentes (FAQ) -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <div class="section-eyebrow">
+          <span class="badge badge-olive">Dudas Comunes</span>
+        </div>
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <p class="section-subtitle">
+          Todo lo que necesitas saber antes de tu primera brigada ciudadana.
+        </p>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="faq-item active fade-in-up">
+          <button class="faq-question">
+            <span>¿Quién puede participar en las brigadas de Rescatando Chopos?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Cualquier persona es bienvenida: familias completas, jóvenes, adultos mayores y niñas o niños acompañados de
+            un tutor. No se requiere experiencia previa ni conocimientos técnicos; en cada brigada explicamos cómo
+            plantar, regar y clasificar los residuos de manera segura.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in-up">
+          <button class="faq-question">
+            <span>¿Tiene algún costo asistir o pertenecer al grupo?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            No, es 100% gratuito. Rescatando Chopos es una iniciativa civil ciudadana sin fines de lucro. Lo único que
+            pedimos es tu entusiasmo y respeto hacia la naturaleza y hacia los demás vecinos.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in-up">
+          <button class="faq-question">
+            <span>¿Puedo llevar a mi mascota?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            ¡Sí! El Parque Central es un espacio pet-friendly. Solo te pedimos que tu perro esté siempre con correa por
+            seguridad de la fauna del parque y de otros visitantes, y que lleves bolsas biodegradables para recoger sus
+            heces.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in-up">
+          <button class="faq-question">
+            <span>¿Cómo puedo ayudar si no puedo asistir los fines de semana?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Puedes donar herramientas (palas, rastrillos, guantes), difundir nuestras convocatorias en tus redes
+            sociales o colonias vecinas, o avisarnos cuando visites el parque de manera recreativa si detectas focos de
+            basura o afectaciones al arbolado.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner de Llamada a la Acción -->
+  <section class="cta-banner-section">
+    <div class="container">
+      <div class="cta-banner-card fade-in-up">
+        <div class="cta-banner-content">
+          <h2>El Parque Central nos necesita a todas y todos.</h2>
+          <p>
+            Da el primer paso hoy. Regístrate como voluntario y acompáñanos a la siguiente jornada para devolverle la
+            vida a nuestros chopos.
+          </p>
+        </div>
+        <div class="cta-banner-actions">
+          <button class="btn btn-accent btn-lg open-modal-btn" data-brigade="General">
+            <span>¡Quiero ser parte!</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Columna 1: Identidad -->
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="assets/logo.png" alt="Logo Rescatando Chopos" class="footer-logo-img">
+            <div>
+              <div class="footer-brand-title">Rescatando Chopos</div>
+              <div class="footer-brand-tagline">Área Natural Protegida Parque Central</div>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Iniciativa ciudadana para rescatar, restaurar y preservar el Área Natural Protegida Parque Central en
+            Cuautitlán Izcalli, Estado de México.
+          </p>
+        </div>
+
+        <!-- Columna 2: Navegación Rápida -->
+        <div class="footer-col">
+          <h4>Explorar</h4>
+          <ul class="footer-links">
+            <li><a href="#inicio" class="footer-link">Inicio</a></li>
+            <li><a href="#mision" class="footer-link">El Parque Central</a></li>
+            <li><a href="#brigadas" class="footer-link">Líneas de Acción</a></li>
+            <li><a href="#biodiversidad" class="footer-link">Biodiversidad</a></li>
+            <li><a href="#agenda" class="footer-link">Próximas Jornadas</a></li>
+            <li><a href="#contacto" class="footer-link">Contacto y Visitas</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Información Oficial -->
+        <div class="footer-col">
+          <h4>Datos del Proyecto</h4>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+            </span>
+            <span>Organización para la conservación del medioambiente · Parque</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </span>
+            <span>Autopista Querétaro-México 34, Arcos del Alba, Cuautitlán Izcalli, México</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </span>
+            <a href="mailto:rescatandochopos@gmail.com"
+              style="color: inherit; text-decoration: underline;">rescatandochopos@gmail.com</a>
+          </div>
+        </div>
+
+        <!-- Columna 4: Redes Sociales y Acción -->
+        <div class="footer-col">
+          <h4>Comunidad en Línea</h4>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+            Sigue nuestras brigadas en tiempo real y comparte fotos con la comunidad:
+          </p>
+          <div class="footer-social-row">
+            <a href="https://instagram.com/rescatandochopos" target="_blank" rel="noopener noreferrer"
+              class="social-btn" aria-label="Instagram @rescatandochopos" title="Instagram @rescatandochopos">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://x.com/RescatandoChopo" target="_blank" rel="noopener noreferrer" class="social-btn"
+              aria-label="X (Twitter) @RescatandoChopo" title="X @RescatandoChopo">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a href="mailto:rescatandochopos@gmail.com" class="social-btn" aria-label="Correo electrónico"
+              title="rescatandochopos@gmail.com">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Rescatando Chopos. Iniciativa ciudadana en Cuautitlán Izcalli. Todos los derechos reservados.
+        </div>
+        <div>
+          Hecho con amor por el medio ambiente y los vecinos de Arcos del Alba.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal de Registro de Voluntariado -->
+  <div class="modal-overlay" id="volunteer-modal">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar ventana">✕</button>
+
+      <div class="modal-header">
+        <span class="badge badge-olive" style="margin-bottom: 0.5rem;">Registro Abierto</span>
+        <h3 class="modal-title" id="modal-heading">Únete a la Brigada Ciudadana</h3>
+        <p class="modal-subtitle">
+          Sé parte de la recuperación del Parque Central. Te contactaremos por correo o llamada antes de cada jornada.
+        </p>
+      </div>
+
+      <form id="volunteer-form">
+        <div class="form-group">
+          <label class="form-label" for="v-name">Nombre completo *</label>
+          <input type="text" id="v-name" class="form-input" placeholder="Ej. Ana Morales" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="v-contact">Teléfono de contacto *</label>
+          <input type="tel" id="v-contact" class="form-input" placeholder="Ej. 55 1234 5678" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="v-email">Correo electrónico (opcional)</label>
+          <input type="email" id="v-email" class="form-input" placeholder="ejemplo@correo.com">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">¿En qué actividad te gustaría sumarte?</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="interest" value="Reforestación" checked>
+              <span>Reforestación y riego</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="interest" value="Limpieza" checked>
+              <span>Limpieza de senderos</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="interest" value="Talleres">
+              <span>Talleres familiares</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="interest" value="Difusión">
+              <span>Fotografía / Redes</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="v-notes">¿Tienes alguna herramienta o mensaje para la brigada?</label>
+          <textarea id="v-notes" class="form-textarea"
+            placeholder="Ej. Llevo pala propia / Vivo cerca de Arcos del Alba..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.95rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Confirmar mi participación</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notice" id="toast-notice">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a3e635" stroke-width="2.5">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+    <div id="toast-text">¡Bienvenido al equipo! Nos vemos en el Parque Central.</div>
+  </div>
+
+  <!-- Lightbox Modal para Fotografías y Campañas Oficiales -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-container">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar vista ampliada">✕</button>
+      <div class="lightbox-img-frame">
+        <img src="" alt="Vista ampliada" class="lightbox-img" id="lightbox-img">
+      </div>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
