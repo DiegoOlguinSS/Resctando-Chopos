@@ -1,0 +1,58 @@
+/* ===================================================================
+   VARIABLES Y DESIGN TOKENS — RESCATANDO CHOPOS
+   Paleta extraída del logotipo oficial (#64822c) y la ilustración comunitaria
+   =================================================================== */
+
+:root {
+  /* Paleta Oficial y Derivados */
+  --chopo-olive: #64822c;           /* Exacto del logotipo */
+  --chopo-olive-light: #7c9f37;     /* Tono fresco de hojas nuevas */
+  --chopo-olive-dark: #44591d;      /* Olivo profundo de alto contraste */
+  --chopo-olive-deep: #283711;      /* Fondo forestal nocturno / títulos */
+  --chopo-leaf-tint: #edf4e0;       /* Tinte suave para badges y fondos */
+  --chopo-leaf-tint-2: #dfeacb;     /* Borde y realce suave */
+  
+  /* Acentos de la Ilustración (Ropa de voluntarios, bolsas reciclaje, agua) */
+  --chopo-amber: #e59a22;           /* Amarillo/Ocre cálido de la ilustración */
+  --chopo-amber-dark: #be7a11;      /* Hover del ámbar */
+  --chopo-amber-soft: #fcf4e6;      /* Fondo suave cálido */
+  --chopo-teal: #3e6d68;            /* Verde azulado suave del fondo */
+  --chopo-teal-soft: #e7f2f1;       /* Tinte agua */
+
+  /* Neutrales Naturales y Fondo Lienzo */
+  --chopo-bg: #faf9f5;              /* Lienzo cálido orgánico, no blanco clínico */
+  --chopo-surface: #ffffff;         /* Superficie de tarjetas */
+  --chopo-surface-alt: #f3efe6;     /* Secciones alternadas */
+  --chopo-surface-dark: #1b250d;    /* Superficie oscura del footer */
+
+  /* Tipografía y Textos */
+  --chopo-text-main: #202715;       /* Carbón vegetal de máxima legibilidad */
+  --chopo-text-muted: #57634d;      /* Texto secundario equilibrado */
+  --chopo-text-light: #838e79;      /* Metadatos y fechas */
+  --chopo-text-inverse: #fbfbf8;    /* Texto sobre fondos oscuros */
+
+  /* Bordes, Sombras y Radios */
+  --chopo-border: #e3ded2;
+  --chopo-border-focus: #64822c;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Sombras orgánicas */
+  --shadow-sm: 0 2px 8px rgba(32, 39, 21, 0.04);
+  --shadow-md: 0 8px 24px rgba(32, 39, 21, 0.08);
+  --shadow-lg: 0 16px 40px rgba(32, 39, 21, 0.12);
+  --shadow-glow: 0 0 30px rgba(100, 130, 44, 0.18);
+
+  /* Transiciones */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Contenedores Fluidos para Pantallas Estándar y Ultrawide */
+  --container-max: min(94vw, 1680px);
+  --container-narrow: 1200px;
+  --container-reading: 960px;
+}

@@ -1,0 +1,123 @@
+/* ===================================================================
+   BOTONES, BADGES, CHIPS & PILLS — RESCATANDO CHOPOS
+   =================================================================== */
+
+/* BOTONES CON CARÁCTER (NO GENÉRICOS) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.45rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  letter-spacing: -0.01em;
+  transition: all var(--transition-smooth);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--chopo-olive);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(100, 130, 44, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--chopo-olive-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 130, 44, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-accent {
+  background: var(--chopo-amber);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(229, 154, 34, 0.35);
+}
+
+.btn-accent:hover {
+  background: var(--chopo-amber-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 154, 34, 0.45);
+}
+
+.btn-secondary {
+  background: var(--chopo-surface);
+  color: var(--chopo-olive-dark);
+  border: 1px solid var(--chopo-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--chopo-leaf-tint);
+  border-color: var(--chopo-olive-light);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--chopo-olive-dark);
+  border: 1.5px solid var(--chopo-olive);
+}
+
+.btn-outline:hover {
+  background: var(--chopo-leaf-tint);
+  border-color: var(--chopo-olive-dark);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+}
+
+.btn-lg {
+  padding: 0.95rem 2rem;
+  font-size: 1.05rem;
+}
+
+/* BADGES & CHIPS */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.badge-olive {
+  background: var(--chopo-leaf-tint);
+  color: var(--chopo-olive-dark);
+  border: 1px solid var(--chopo-leaf-tint-2);
+}
+
+.badge-amber {
+  background: var(--chopo-amber-soft);
+  color: var(--chopo-amber-dark);
+  border: 1px solid rgba(229, 154, 34, 0.25);
+}
+
+.badge-teal {
+  background: var(--chopo-teal-soft);
+  color: var(--chopo-teal);
+  border: 1px solid rgba(62, 109, 104, 0.2);
+}
+
+/* ALINEACIÓN DE ICONOS SVG EN BADGES Y PILLS */
+.command-card-pill,
+.command-location-tag,
+.event-type-badge,
+.manifesto-tag,
+.img-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}

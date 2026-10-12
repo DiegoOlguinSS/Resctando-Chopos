@@ -1,0 +1,14 @@
+/* ===================================================================
+   CANVAS DE PARTÍCULAS & HOJAS FLOTANTES 3D — RESCATANDO CHOPOS
+   =================================================================== */
+
+.floating-leaves-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 3;
+  will-change: transform;
+}

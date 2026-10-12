@@ -47,33 +47,42 @@
           <stop offset="100%" stop-color="#24180d" stop-opacity="0" />
         </radialGradient>
         <linearGradient id="rootBarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#3d2a17" />
-          <stop offset="50%" stop-color="#26190d" />
-          <stop offset="100%" stop-color="#140c06" />
+          <stop offset="0%" stop-color="#6e5334" />
+          <stop offset="25%" stop-color="#553d24" />
+          <stop offset="65%" stop-color="#3c2a17" />
+          <stop offset="100%" stop-color="#24170c" />
         </linearGradient>
-        <linearGradient id="rootMossGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#556e25" stop-opacity="0.9" />
-          <stop offset="100%" stop-color="#2c3a11" stop-opacity="0.3" />
+        <linearGradient id="rootFluteGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#a38258" />
+          <stop offset="35%" stop-color="#7a5b36" />
+          <stop offset="75%" stop-color="#4d351d" />
+          <stop offset="100%" stop-color="#281a0d" />
+        </linearGradient>
+        <linearGradient id="rootRimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#8c6a43" stop-opacity="0.9" />
+          <stop offset="50%" stop-color="#5a4025" stop-opacity="0.4" />
+          <stop offset="100%" stop-color="#8c6a43" stop-opacity="0.9" />
         </linearGradient>
         <radialGradient id="soilMoundGrad" cx="50%" cy="85%" r="70%">
-          <stop offset="0%" stop-color="#0f1908" stop-opacity="0.85" />
-          <stop offset="60%" stop-color="#14210a" stop-opacity="0.5" />
-          <stop offset="100%" stop-color="#18240f" stop-opacity="0" />
-        </radialGradient>
-        <linearGradient id="rootFluteGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#4a3520" />
-          <stop offset="50%" stop-color="#2c1c0f" />
-          <stop offset="100%" stop-color="#140c06" />
-        </linearGradient>
-        <radialGradient id="humusBedGrad" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stop-color="#0a1205" stop-opacity="0.95" />
-          <stop offset="60%" stop-color="#111c08" stop-opacity="0.65" />
-          <stop offset="100%" stop-color="#18260d" stop-opacity="0" />
+          <stop offset="50%" stop-color="#121e09" stop-opacity="0.75" />
+          <stop offset="100%" stop-color="#1b250d" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient id="humusBedGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#060b03" stop-opacity="0.98" />
+          <stop offset="55%" stop-color="#0e1706" stop-opacity="0.7" />
+          <stop offset="100%" stop-color="#1b250d" stop-opacity="0" />
         </radialGradient>
         <linearGradient id="mossClusterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#84cc16" />
-          <stop offset="50%" stop-color="#4d7c0f" />
+          <stop offset="0%" stop-color="#bef264" />
+          <stop offset="30%" stop-color="#84cc16" />
+          <stop offset="70%" stop-color="#4d7c0f" />
           <stop offset="100%" stop-color="#1f3704" />
+        </linearGradient>
+        <linearGradient id="sapRootGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#a3e635" stop-opacity="0.9" />
+          <stop offset="60%" stop-color="#65a30d" stop-opacity="0.75" />
+          <stop offset="100%" stop-color="#365314" stop-opacity="0.2" />
         </linearGradient>
         <filter id="sapPulseGlow" x="-30%" y="-30%" width="160%" height="160%">
           <feGaussianBlur stdDeviation="3.5" result="blur" />
@@ -84,9 +93,10 @@
         </filter>
       </defs>
 
-      <!-- Grupos dinámicos renderizados por app.js -->
-      <g id="tree-roots-group" class="tree-roots-group"></g>
+      <!-- Grupos dinámicos renderizados por tree.js -->
+      <g id="tree-roots-bg-group" class="tree-roots-bg-group"></g>
       <g id="tree-trunk-group" class="tree-trunk-group"></g>
+      <g id="tree-roots-group" class="tree-roots-group"></g>
       <g id="tree-branches-group" class="tree-branches-group"></g>
       <g id="tree-foliage-group" class="tree-foliage-group"></g>
     </svg>
@@ -224,13 +234,19 @@
         <!-- Tarjeta 1: Próxima Jornada & Cuenta Regresiva Viva -->
         <div class="command-card card-countdown">
           <div class="command-card-header">
-            <span class="command-card-pill">📅 Próxima Jornada</span>
+            <span class="command-card-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Próxima Jornada</span>
+            </span>
             <span class="live-dot-mini"></span>
           </div>
           <h3 class="command-card-title">Saneamiento y Cajetes de Chopos</h3>
           <p class="command-card-meta">
             <span>Sábado 11 Octubre · 08:30 AM</span>
-            <span class="command-location-tag">📍 Kiosko Arcos del Alba</span>
+            <span class="command-location-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Kiosko Arcos del Alba</span>
+            </span>
           </p>
 
           <!-- Widget de Cuenta Regresiva -->
@@ -265,7 +281,10 @@
         <!-- Tarjeta 2: Métricas de Impacto con Barra de Meta Comunitaria -->
         <div class="command-card card-metrics">
           <div class="command-card-header">
-            <span class="command-card-pill pill-olive">🌱 Impacto Acumulado</span>
+            <span class="command-card-pill pill-olive">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-9"></path><path d="M9 13a4.5 4.5 0 0 1 3-4.24A4.5 4.5 0 0 1 18 13c0 2.5-3 5-6 6-3-1-6-3.5-6-6a4.5 4.5 0 0 1 3-4.24"></path></svg>
+              <span>Impacto Acumulado</span>
+            </span>
             <span class="verified-tag">100% Vecinal</span>
           </div>
 
@@ -370,14 +389,20 @@
           style="cursor: pointer;">
           <img src="assets/caminata-reconocimiento.jpg"
             alt="Vecinos y voluntarios en caminata de reconocimiento en Parque Central">
-          <span class="img-badge">🚶‍♀️ Caminata y Monitoreo Vecinal</span>
+          <span class="img-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Caminata y Monitoreo Vecinal</span>
+          </span>
         </div>
         <div class="about-img-card" data-lightbox="assets/flores-silvestres.jpg"
           data-caption="Mirasoles y flores silvestres en los pastizales del Parque Central. Un refugio vital para abejas, mariposas y colibríes en medio de la ciudad."
           style="cursor: pointer;">
           <img src="assets/flores-silvestres.jpg"
             alt="Flores silvestres y pradera natural en el Parque Central de Izcalli">
-          <span class="img-badge">🌸 Biodiversidad y Flora Silvestre</span>
+          <span class="img-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2a4.5 4.5 0 0 0-4.5 4.5c0 1.8 1.1 3.4 2.7 4.1C9.4 11 8.8 12 8.8 13.5c0 2.5 2 4.5 4.5 4.5s4.5-2 4.5-4.5c0-1.5-.6-2.5-1.4-2.9 1.6-.7 2.7-2.3 2.7-4.1A4.5 4.5 0 0 0 12 2z"></path></svg>
+            <span>Biodiversidad y Flora Silvestre</span>
+          </span>
         </div>
         <div class="about-img-card"
           style="background: linear-gradient(135deg, var(--chopo-olive) 0%, var(--chopo-olive-dark) 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; text-align: center; color: white;">
@@ -498,7 +523,8 @@
           <img src="assets/brigada-palas-jovenes.jpg" alt="Brigadistas comunitarios con palas en el Parque Central"
             class="spotlight-img">
           <div class="spotlight-badge">
-            <span>✨ Comunidad Parque Central</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Comunidad Parque Central</span>
           </div>
         </div>
 
@@ -516,14 +542,18 @@
 
           <div class="spotlight-features">
             <div class="spotlight-feat-item">
-              <div class="spotlight-feat-icon">🌱</div>
+              <div class="spotlight-feat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-9"></path><path d="M9 13a4.5 4.5 0 0 1 3-4.24A4.5 4.5 0 0 1 18 13c0 2.5-3 5-6 6-3-1-6-3.5-6-6a4.5 4.5 0 0 1 3-4.24"></path></svg>
+              </div>
               <div>
                 <h5>Manos que Reforestan</h5>
                 <p>Jóvenes organizados para dar mantenimiento y protección a los chopos y arbolado nativo.</p>
               </div>
             </div>
             <div class="spotlight-feat-item">
-              <div class="spotlight-feat-icon">🤝</div>
+              <div class="spotlight-feat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
               <div>
                 <h5>Red Solidaria Vecinal</h5>
                 <p>Un espacio donde vecinas y vecinos de Arcos del Alba y todo Izcalli conviven sanamente.</p>
@@ -531,7 +561,7 @@
             </div>
           </div>
 
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+          <div class="spotlight-actions">
             <button class="btn btn-primary open-modal-btn" data-brigade="Brigada con Palas y Reforestación">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <polyline points="20 6 9 17 4 12"></polyline>
@@ -736,7 +766,10 @@
               <span class="event-month">OCT</span>
             </div>
             <div class="event-content">
-              <span class="event-type-badge">🧹 Jornada de Limpieza y Separación</span>
+              <span class="event-type-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                <span>Jornada de Limpieza y Separación</span>
+              </span>
               <h3 class="event-title">Saneamiento de Senderos Principales</h3>
               <div class="event-meta">
                 <span class="event-meta-item">
@@ -771,8 +804,10 @@
             </div>
             <div class="event-content">
               <span class="event-type-badge"
-                style="background: var(--chopo-leaf-tint); color: var(--chopo-olive-dark);">🌱 Brigada de
-                Reforestación</span>
+                style="background: var(--chopo-leaf-tint); color: var(--chopo-olive-dark);">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-9"></path><path d="M9 13a4.5 4.5 0 0 1 3-4.24A4.5 4.5 0 0 1 18 13c0 2.5-3 5-6 6-3-1-6-3.5-6-6a4.5 4.5 0 0 1 3-4.24"></path></svg>
+                <span>Brigada de Reforestación</span>
+              </span>
               <h3 class="event-title">Mantenimiento de Brotes y Cajetes de Chopos</h3>
               <div class="event-meta">
                 <span class="event-meta-item">
@@ -805,7 +840,10 @@
               <span class="event-month">OCT</span>
             </div>
             <div class="event-content">
-              <span class="event-type-badge">🎨 Taller Comunitario Familiar</span>
+              <span class="event-type-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C21.997 5.75 17.5 2 12 2z"></path></svg>
+                <span>Taller Comunitario Familiar</span>
+              </span>
               <h3 class="event-title">Avistamiento de Aves y Taller de Huerto Casero</h3>
               <div class="event-meta">
                 <span class="event-meta-item">
@@ -843,22 +881,30 @@
           </h4>
           <ul class="tips-list">
             <li class="tip-item">
-              <span class="tip-item-icon">✓</span>
+              <span class="tip-item-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
               <span><strong>Ropa cómoda y gorra:</strong> Calzado cerrado o botas para terracería y protección
                 solar.</span>
             </li>
             <li class="tip-item">
-              <span class="tip-item-icon">✓</span>
+              <span class="tip-item-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
               <span><strong>Hidratación reutilizable:</strong> Lleva tu termo o cantimplora con agua para evitar
                 plásticos de un solo uso.</span>
             </li>
             <li class="tip-item">
-              <span class="tip-item-icon">✓</span>
+              <span class="tip-item-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
               <span><strong>Guantes de trabajo:</strong> Si tienes guantes de jardinería o carnaza, tráelos contigo. (Si
                 no tienes, prestamos algunos en el punto).</span>
             </li>
             <li class="tip-item">
-              <span class="tip-item-icon">✓</span>
+              <span class="tip-item-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
               <span><strong>Ambiente familiar y seguro:</strong> Puedes venir con tus hijos, abuelos o amigos; hay
                 actividades adaptadas para todos.</span>
             </li>
@@ -899,7 +945,10 @@
             </div>
           </div>
           <div class="manifesto-content">
-            <div class="manifesto-tag">🌿 Compromiso y Legado</div>
+            <div class="manifesto-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>Compromiso y Legado</span>
+            </div>
             <div class="manifesto-quote">"Cuidar el Parque Central no es solo proteger un espacio, es proteger nuestra
               vida y nuestro futuro."</div>
             <p style="font-size: 0.9rem; color: var(--chopo-text-muted); line-height: 1.6;">
@@ -931,7 +980,10 @@
             </div>
           </div>
           <div class="manifesto-content">
-            <div class="manifesto-tag">🦋 Resiliencia del Ecosistema</div>
+            <div class="manifesto-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
+              <span>Resiliencia del Ecosistema</span>
+            </div>
             <div class="manifesto-quote">"En cada árbol, lago e insecto late un recordatorio: la naturaleza resiste,
               incluso en medio del concreto."</div>
             <p style="font-size: 0.9rem; color: var(--chopo-text-muted); line-height: 1.6;">
@@ -1153,21 +1205,27 @@
             <!-- Formas de acceso -->
             <div class="loc-modes-grid">
               <div class="loc-mode-item">
-                <span class="mode-icon">🚗</span>
+                <span class="mode-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 3C2 11.2 2 11.6 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg>
+                </span>
                 <div>
                   <h6>En Automóvil</h6>
                   <p>Por lateral Autopista México-Querétaro sentido sur, entronque directo con Arcos del Alba.</p>
                 </div>
               </div>
               <div class="loc-mode-item">
-                <span class="mode-icon">🚌</span>
+                <span class="mode-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6v6"></path><path d="M15 6v6"></path><path d="M2 12h19.6"></path><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.6-.4-1-1-1H3c-.6 0-1 .4-1 1 0 .4.1.8.2 1.2.3 1.1.8 2.8.8 2.8h3"></path><circle cx="7" cy="18" r="2"></circle><path d="M9 18h5"></path><circle cx="16" cy="18" r="2"></circle></svg>
+                </span>
                 <div>
                   <h6>Transporte Público</h6>
                   <p>Descenso sobre la autopista en puente peatonal Arcos del Alba o combis de Izcalli Centro.</p>
                 </div>
               </div>
               <div class="loc-mode-item">
-                <span class="mode-icon">🚶</span>
+                <span class="mode-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4" r="2"></circle><path d="M9 20l3-6 3 2 2 4"></path><path d="M6 14l3.5-3.5L12 12l3-3"></path></svg>
+                </span>
                 <div>
                   <h6>A pie / En Bici</h6>
                   <p>Accesos peatonales seguros por andadores vecinales de Arcos del Alba hacia el kiosko.</p>
@@ -1176,14 +1234,15 @@
             </div>
           </div>
 
-          <!-- Mapa Interactivo Integrado -->
+          <!-- Mapa Interactivo Oficial de Google Maps -->
           <div class="map-interactive-container">
-            <iframe class="map-iframe-enhanced" title="Mapa del Área Natural Protegida Parque Central"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-99.2300%2C19.6400%2C-99.1900%2C19.6700&amp;layer=mapnik&amp;marker=19.6550%2C-99.2100"
-              loading="lazy">
+            <iframe class="map-iframe-enhanced" title="Ubicación oficial en Google Maps del Parque Central de Cuautitlán Izcalli"
+              src="https://maps.google.com/maps?q=Parque+Central+de+Cuautitl%C3%A1n+Izcalli,+Arcos+del+Alba,+Cuautitl%C3%A1n+Izcalli,+Estado+de+M%C3%A9xico&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+              loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
             </iframe>
             <div class="map-overlay-info">
-              <span>📍 Punto de reunión de brigadas: Kiosko Central</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Punto de reunión de brigadas: Kiosko Central Arcos del Alba</span>
             </div>
           </div>
 
@@ -1464,7 +1523,8 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <!-- Orquestador Modular JavaScript (ES Modules nativos) -->
+  <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

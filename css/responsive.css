@@ -1,0 +1,251 @@
+/* ===================================================================
+   RESPONSIVE DESIGN (MÓVIL, TABLETA, DESKTOP Y ULTRAWIDE) — RESCATANDO CHOPOS
+   =================================================================== */
+
+/* PANTALLAS GRANDES Y ULTRAWIDE (1440px+) */
+@media (min-width: 1440px) {
+  .hero-main-title {
+    font-size: 4.2rem;
+  }
+  
+  .hero-command-center {
+    gap: 2.25rem;
+    margin-top: 5rem;
+  }
+
+  .command-card {
+    padding: 2.5rem;
+  }
+
+  .bio-grid {
+    gap: 2.25rem;
+  }
+
+  .contact-hub-grid {
+    gap: 3.5rem;
+  }
+}
+
+/* TABLETS Y ESCRITORIOS MEDIANOS O PORTÁTILES (hasta 1280px) */
+@media (max-width: 1280px) {
+  .bio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
+  .contact-hub-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ba-legend-divider {
+    display: none;
+  }
+}
+
+/* TABLETS VERTICALES (hasta 992px) */
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-gallery {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .manifesto-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .spotlight-card {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .spotlight-media {
+    min-height: 420px;
+    max-height: none;
+  }
+
+  .spotlight-info {
+    padding: 2.25rem 1.75rem;
+    gap: 1.15rem;
+  }
+
+  .metrics-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+    padding: 1.75rem;
+  }
+
+  .metric-item:nth-child(2)::after {
+    display: none;
+  }
+
+  .events-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .location-card-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .location-map-panel {
+    min-height: 320px;
+  }
+
+  .join-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cta-banner-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.5rem 1.75rem;
+  }
+
+  .cta-banner-actions {
+    justify-content: center;
+  }
+}
+
+/* BREAKPOINT DE COMANDO HERO (hasta 860px) */
+@media (max-width: 860px) {
+  .hero-command-center {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* MÓVILES Y PANTALLAS PEQUEÑAS (hasta 768px) */
+@media (max-width: 768px) {
+  .top-bar-inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .top-bar-actions {
+    display: none;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 1.25rem;
+    box-shadow: var(--shadow-lg);
+    border-bottom: 1px solid var(--chopo-border);
+    transform: translateY(-150%);
+    opacity: 0;
+    transition: all var(--transition-smooth);
+    pointer-events: none;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .nav-actions .btn {
+    display: none;
+  }
+
+  .spotlight-features {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .event-action {
+    width: 100%;
+  }
+
+  .event-action .btn {
+    width: 100%;
+  }
+
+  .join-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-container {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-item::after {
+    display: none !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-box {
+    padding: 1.75rem;
+  }
+
+  .checkbox-group {
+    grid-template-columns: 1fr;
+  }
+
+  .lightbox-modal {
+    padding: 1rem;
+  }
+
+  .lightbox-close {
+    top: -2.2rem;
+  }
+}
+
+/* MÓVILES ESTRECHOS (hasta 640px) */
+@media (max-width: 640px) {
+  .bio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-mini-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-action-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-action-buttons .btn {
+    width: 100%;
+  }
+}

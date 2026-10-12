@@ -1,0 +1,97 @@
+/* ===================================================================
+   BLINDAJE DE CAPAS (Z-INDEX Y STACKING CONTEXT) — RESCATANDO CHOPOS
+   Garantiza que el árbol vivo (z: 2), partículas (z: 3) y mariposas (z: 6)
+   queden estrictamente detrás de toda información textual y tarjetas (z: 10+)
+   =================================================================== */
+
+.section,
+.hero-panoramic-section,
+.community-spotlight-section,
+.manifesto-section,
+.section-biodiversity,
+.section-contact-hub,
+.cta-banner-section,
+.site-footer {
+  position: relative;
+}
+
+.container,
+.hero-container,
+.about-grid,
+.footer-grid,
+.footer-bottom {
+  position: relative;
+  z-index: 10;
+}
+
+/* Blindaje de encabezados y textos */
+.section-header,
+.section-title,
+.section-subtitle,
+.section-eyebrow,
+.hero-header-center,
+.hero-main-title,
+.hero-main-subtitle,
+.about-text,
+.about-content,
+.about-highlight-box {
+  position: relative;
+  z-index: 10;
+}
+
+/* Blindaje de tarjetas y cajas interactivas con glassmorphism */
+.card-countdown,
+.card-metrics,
+.about-gallery,
+.brigade-card,
+.action-card,
+.spotlight-card,
+.species-card,
+.bio-card,
+.agenda-card,
+.event-card,
+.manifesto-card,
+.step-card,
+.join-step-card,
+.contact-hub-card,
+.contact-card,
+.contact-form-wrap,
+.contact-info-panel,
+.faq-item,
+.faq-question,
+.faq-answer {
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.cta-banner-card {
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(135deg, var(--chopo-olive) 0%, var(--chopo-olive-dark) 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Blindaje de capas del Footer */
+.site-footer .container,
+.site-footer .footer-grid,
+.site-footer .footer-brand,
+.site-footer .footer-col,
+.site-footer h4,
+.site-footer p,
+.site-footer a,
+.site-footer span,
+.site-footer div,
+.site-footer ul,
+.site-footer li {
+  position: relative;
+  z-index: 10;
+}
+
+.footer-bottom,
+.footer-bottom * {
+  position: relative;
+  z-index: 12 !important;
+}

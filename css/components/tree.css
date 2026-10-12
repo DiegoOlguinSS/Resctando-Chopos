@@ -1,0 +1,327 @@
+/* ===================================================================
+   SISTEMA DE ANIMACIÓN DEL ÁRBOL VIVO & RAMAS PROCEDURALES — RESCATANDO CHOPOS
+   =================================================================== */
+
+.living-tree-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.living-tree-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Trazo y Corteza del Tronco */
+.trunk-outer-shadow {
+  fill: none;
+  stroke: #180e06;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.65;
+}
+
+.trunk-bark-main {
+  fill: none;
+  stroke: url(#trunkBarkGrad);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 8px 18px rgba(24, 14, 6, 0.22));
+}
+
+.trunk-wood-texture {
+  fill: none;
+  stroke: #6b5133;
+  stroke-linecap: round;
+  opacity: 0.5;
+}
+
+.trunk-moss-accent {
+  fill: none;
+  stroke: #597327;
+  stroke-linecap: round;
+  opacity: 0.85;
+  stroke-dasharray: 25 150;
+}
+
+/* Canal Vital de Savia Fluctuante Ascendente */
+.trunk-sap-line {
+  fill: none;
+  stroke: url(#sapCoreGrad);
+  stroke-linecap: round;
+  stroke-dasharray: 14 30;
+  filter: url(#sapPulseGlow);
+  opacity: 0.9;
+  animation: sapFlowAscent 12s linear infinite;
+  will-change: stroke-dashoffset;
+}
+
+@keyframes sapFlowAscent {
+  from {
+    stroke-dashoffset: 880;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Raíces Escultóricas Botánicas en el Suelo del Footer */
+.tree-roots-bg-group,
+.tree-roots-group {
+  pointer-events: none;
+}
+
+.root-mound-ambient {
+  fill: url(#humusBedGrad);
+  opacity: 0.98;
+}
+
+.root-mound-deep {
+  fill: url(#soilMoundGrad);
+  opacity: 0.92;
+}
+
+.root-buttress-main {
+  fill: url(#rootBarkGrad);
+  filter: drop-shadow(0 14px 32px rgba(8, 5, 2, 0.8));
+}
+
+.root-buttress-rim {
+  fill: none;
+  stroke: url(#rootRimGrad);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.85;
+}
+
+.root-flute-ridge {
+  fill: none;
+  stroke: url(#rootFluteGrad);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.92;
+  filter: drop-shadow(0 2px 6px rgba(10, 6, 2, 0.45));
+}
+
+.root-finger-stem {
+  fill: none;
+  stroke: url(#rootBarkGrad);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 6px 16px rgba(8, 5, 2, 0.6));
+}
+
+.root-finger-rim {
+  fill: none;
+  stroke: url(#rootFluteGrad);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.75;
+}
+
+.root-sap-vein {
+  fill: none;
+  stroke: url(#sapRootGrad);
+  stroke-linecap: round;
+  stroke-dasharray: 8 16;
+  filter: url(#sapPulseGlow);
+  animation: sapPulseAscend 2.4s linear infinite;
+}
+
+.root-moss-detail {
+  fill: url(#mossClusterGrad);
+  stroke: none;
+  opacity: 0.95;
+  filter: drop-shadow(0 2px 8px rgba(163, 230, 53, 0.35));
+}
+
+.root-sprout-leaf {
+  transform-origin: center bottom;
+  animation: rootSproutSway 3.6s ease-in-out infinite alternate;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+}
+
+@keyframes rootSproutSway {
+  0% { transform: rotate(-6deg); }
+  100% { transform: rotate(6deg); }
+}
+
+/* Ramas Emergentes y Oscilación con el Viento */
+.tree-branch-group {
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.branch-sway-arch {
+  animation: branchSwayArch 6.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.branch-sway-breeze {
+  animation: branchSwayBreeze 8.4s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
+}
+
+.branch-sway-wave {
+  animation: branchSwayWave 10.2s ease-in-out infinite alternate;
+}
+
+.branch-sway-drape {
+  animation: branchSwayDrape 11.8s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+}
+
+.branch-sway-spring {
+  animation: branchSwaySpring 5.6s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate;
+}
+
+.branch-sway-gust {
+  animation: branchSwayGust 9.1s cubic-bezier(0.25, 0.1, 0.25, 1) infinite alternate;
+}
+
+@keyframes branchSwayArch {
+  0% { transform: rotate(-3.2deg); }
+  100% { transform: rotate(3.8deg); }
+}
+
+@keyframes branchSwayBreeze {
+  0% { transform: rotate(-1.5deg) scaleY(0.99); }
+  45% { transform: rotate(2.8deg) scaleY(1.01); }
+  100% { transform: rotate(-0.8deg) scaleY(1.0); }
+}
+
+@keyframes branchSwayWave {
+  0% { transform: rotate(-4.2deg) scale(0.985); }
+  55% { transform: rotate(2.1deg) scale(1.015); }
+  100% { transform: rotate(3.4deg) scale(0.99); }
+}
+
+@keyframes branchSwayDrape {
+  0% { transform: rotate(-1.2deg) translateY(-2px); }
+  50% { transform: rotate(1.8deg) translateY(3px); }
+  100% { transform: rotate(-2.2deg) translateY(-1px); }
+}
+
+@keyframes branchSwaySpring {
+  0% { transform: rotate(-2.8deg); }
+  50% { transform: rotate(3.5deg); }
+  100% { transform: rotate(-1.4deg); }
+}
+
+@keyframes branchSwayGust {
+  0% { transform: rotate(-1.0deg); }
+  30% { transform: rotate(4.2deg); }
+  40% { transform: rotate(3.2deg); }
+  100% { transform: rotate(-1.8deg); }
+}
+
+.branch-limb-stem {
+  fill: none;
+  stroke: #3c2714;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 4px 10px rgba(20, 12, 5, 0.22));
+}
+
+.branch-twig-stem {
+  fill: none;
+  stroke: #4d341b;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 6px rgba(20, 12, 5, 0.16));
+}
+
+/* Hojas de Chopo en las Ramas */
+.chopo-leaf-node {
+  transition: transform 0.3s ease;
+}
+
+.chopo-leaf-blade {
+  transform-origin: 0px 0px;
+  filter: drop-shadow(0 2px 5px rgba(18, 28, 8, 0.22));
+  animation: chopoLeafTremble 3.4s ease-in-out infinite alternate;
+}
+
+.chopo-leaf-node:nth-child(2n) .chopo-leaf-blade {
+  animation-duration: 2.8s;
+  animation-delay: -1.2s;
+}
+
+.chopo-leaf-node:nth-child(3n) .chopo-leaf-blade {
+  animation-duration: 4.1s;
+  animation-delay: -2.5s;
+}
+
+@keyframes chopoLeafTremble {
+  0% {
+    transform: rotate(-4deg) scale(0.97, 1.03);
+  }
+  50% {
+    transform: rotate(2deg) scale(1.02, 0.98);
+  }
+  100% {
+    transform: rotate(5deg) scale(0.98, 1.02);
+  }
+}
+
+.chopo-leaf-vein {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+}
+
+/* Caída y Rebrote de Hojas en Ramas */
+.leaf-detaching {
+  animation: leafFallingDetached 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+  pointer-events: none;
+}
+
+@keyframes leafFallingDetached {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  30% {
+    opacity: 0.9;
+    transform: translate(12px, 25px) rotate(40deg) scale(0.95);
+  }
+  70% {
+    opacity: 0.6;
+    transform: translate(-15px, 70px) rotate(110deg) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(18px, 120px) rotate(180deg) scale(0.35);
+  }
+}
+
+.leaf-budding {
+  animation: leafSproutBud 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+@keyframes leafSproutBud {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-25deg);
+    filter: brightness(1.7);
+  }
+  60% {
+    opacity: 0.95;
+    transform: scale(1.25) rotate(6deg);
+    filter: brightness(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+}

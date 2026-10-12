@@ -1,0 +1,198 @@
+/* ===================================================================
+   GALERÍA FOTOGRÁFICA, COLLAGES Y LIGHTBOX — RESCATANDO CHOPOS
+   =================================================================== */
+
+/* Collage fotográfico orgánico en sección Sobre el Parque */
+.about-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.about-img-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--chopo-border);
+  position: relative;
+}
+
+.about-img-card.tall {
+  grid-row: span 2;
+}
+
+.about-img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.about-img-card:hover img {
+  transform: scale(1.05);
+}
+
+.img-badge {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  background: rgba(27, 37, 13, 0.85);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+/* Manifiesto: Img wrapper y zoom hint */
+.manifesto-img-wrapper {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #112924;
+  cursor: pointer;
+}
+
+.manifesto-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.manifesto-card:hover .manifesto-img {
+  transform: scale(1.03);
+}
+
+.manifesto-zoom-hint {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(27, 37, 13, 0.75);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all var(--transition-fast);
+}
+
+.manifesto-card:hover .manifesto-zoom-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Spotlight: Media y zoom equilibrado (mismo porte que el collage de Sobre el Parque) */
+.spotlight-media {
+  position: relative;
+  height: 100%;
+  min-height: 520px;
+  background: #253315;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.spotlight-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spotlight-media:hover .spotlight-img {
+  transform: scale(1.03);
+}
+
+/* LIGHTBOX MODAL PARA IMÁGENES EN ALTA RESOLUCIÓN */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 20, 8, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.lightbox-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-container {
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transform: scale(0.94);
+  transition: transform var(--transition-smooth);
+}
+
+.lightbox-modal.open .lightbox-container {
+  transform: scale(1);
+}
+
+.lightbox-img-frame {
+  max-height: 75vh;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #111;
+}
+
+.lightbox-img {
+  max-height: 75vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.lightbox-caption {
+  margin-top: 1rem;
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  max-width: 700px;
+  line-height: 1.5;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
